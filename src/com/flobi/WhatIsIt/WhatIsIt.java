@@ -163,7 +163,7 @@ public class WhatIsIt extends JavaPlugin {
 		return itemName(item);
 	}
 	public static String playerName(Player player) {
-		return player.getDisplayName();
+		return player.getName();
 	}
 	public static String entityName(Entity entity) {
 		if (entity.getType() == EntityType.SPLASH_POTION) {

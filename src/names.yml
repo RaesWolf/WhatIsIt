@@ -1,0 +1,517 @@
+# entity number 1, dropped item, is converted to item table below.
+# entity number 16, splash potion, is converted to item table below.
+# entity number 21, falling block, is converted to item table below.
+entities:
+  'UNKNOWN': Unknown
+  '2;0': Experience Orb
+  '10;0': Arrow
+  '11;0': Snowball
+  '12;0': Ghast Fireball
+  '13;0': Blaze Fireball
+  '14;0': Ender Pearl
+  '15;0': Eye of Ender
+  '17;0': Bottle o' Enchanting
+  '20;0': Primed TNT
+  '40;0': Minecart
+  '41;0': Boat
+  '50;0': Creeper
+  '51;0': Skeleton 
+  '52;0': Spider
+  '53;0': Giant
+  '54;0': Zombie
+  '55;0': Slime
+  '56;0': Ghast
+  '57;0': Zombie Pigman
+  '58;0': Enderman
+  '59;0': Cave Spider
+  '60;0': Silverfish
+  '61;0': Blaze
+  '62;0': Magma Cube
+  '63;0': Ender Dragon
+  '90;0': Pig
+  '91;0': White Sheep
+  '91;1': Orange Sheep
+  '91;2': Magenta Sheep
+  '91;3': Light Blue Sheep
+  '91;4': Yellow Sheep
+  '91;5': Lime Sheep
+  '91;6': Pink Sheep
+  '91;7': Gray Sheep
+  '91;8': Silver Sheep
+  '91;9': Cyan Sheep
+  '91;10': Purple Sheep
+  '91;11': Blue Sheep
+  '91;12': Brown Sheep
+  '91;13': Green Sheep
+  '91;14': Red Sheep
+  '91;15': Black Sheep
+  '92;0': Cow
+  '93;0': Chicken
+  '94;0': Squid
+  '95;0': Wolf
+  '96;0': Mooshroom
+  '97;0': Snow Golem
+  '98;0': Ocelot
+  '98;1': Tabby Cat
+  '98;2': Tuxedo Cat
+  '98;3': Siamese Cat
+  '99;0': Iron Golem
+  '120;0': Farmer Villager
+  '120;1': Librarian Villager
+  '120;2': Priest Villager
+  '120;3': Blacksmith Villager
+  '120;4': Butcher Villager
+  '200;0': Ender Crystal
+
+items:
+  'UNKNOWN': Unknown
+  '0;0': Air
+  '1;0': Stone
+  '2;0': Grass
+  '3;0': Dirt
+  '4;0': Cobblestone
+  '5;0': Oak Plank
+  '5;1': Pine Plank
+  '5;2': Birch Plank
+  '5;3': Jungle Plank
+  '6;0': Oak Sapling
+  '6;1': Pine Sapling
+  '6;2': Birch Sapling
+  '6;3': Jungle Sapling
+  '7;0': Bedrock
+  '8;0': Water
+  '9;0': Stationary Water
+  '10;0': Lava
+  '11;0': Stationary Lava
+  '12;0': Sand
+  '13;0': Gravel
+  '14;0': Gold Ore
+  '15;0': Iron Ore
+  '16;0': Coal Ore
+  '17;0': Oak Log
+  '17;1': Pine Log
+  '17;2': Birch Log
+  '17;3': Jungle Log
+  '18;0': Oak Leaves
+  '18;1': Pine Leaves
+  '18;2': Birch Leaves
+  '18;3': Jungle Leaves
+  '19;0': Sponge
+  '20;0': Glass
+  '21;0': Lapis Lazuli Ore
+  '22;0': Lapis Lazuli Block
+  '23;0': Dispenser
+  '24;0': Sandstone
+  '24;1': Decorative Sandstone
+  '24;2': Smooth Sandstone
+  '25;0': Note Lock
+  '26;0': Bed
+  '27;0': Powered Rail
+  '28;0': Detector Rail
+  '29;0': Sticky Piston
+  '30;0': Cobweb
+  '31;0': Dead Shrub
+  '31;1': Tall Grass
+  '31;2': Fern
+  '32;0': Dead Bush
+  '33;0': Piston
+  '34;0': Piston Extension
+  '35;0': White Wool
+  '35;1': Orange Wool
+  '35;2': Magenta Wool
+  '35;3': Light Blue Wool
+  '35;4': Yellow Wool
+  '35;5': Lime Wool
+  '35;6': Pink Wool
+  '35;7': Gray Wool
+  '35;8': Light Gray Wool
+  '35;9': Cyan Wool
+  '35;10': Purple Wool
+  '35;11': Blue Wool
+  '35;12': Brown Wool
+  '35;13': Dark Green Wool
+  '35;14': Red Wool
+  '35;15': Black Wool
+  '36;0': Block moved by Piston
+  '37;0': Dandelion
+  '38;0': Rose
+  '39;0': Brown Mushroom
+  '40;0': Red Mushroom
+  '41;0': Block of Gold
+  '42;0': Block of Iron
+  '43;0': Stone Double Slab
+  '43;1': Sandstone Double Slab
+  '43;2': Wooden Double Slab
+  '43;3': Cobblestone Double Slab
+  '43;4': Brick Double Slab
+  '43;5': Stone Brick Double Slab
+  '44;0': Stone Slab
+  '44;1': Sandstone Slab
+  '44;2': Wooden Slab
+  '44;3': Cobblestone Slab
+  '44;4': Brick Slab
+  '44;5': Stone Brick Slab
+  '45;0': Bricks
+  '46;0': TNT
+  '47;0': Bookshelf
+  '48;0': Moss Stone
+  '49;0': Obsidian
+  '50;0': Torch
+  '51;0': Fire
+  '52;0': Monster Spawner
+  '53;0': Wooden Stairs
+  '54;0': Chest
+  '55;0': Redstone Wire
+  '56;0': Diamond Ore
+  '57;0': Block of Diamond
+  '58;0': Crafting Table
+  '59;0': Wheat
+  '60;0': Farmland
+  '61;0': Furnace
+  '62;0': Burning Furnace
+  '63;0': Sign Post
+  '64;0': Wooden Door
+  '65;0': Ladder
+  '66;0': Rails
+  '67;0': Cobblestone Stairs
+  '68;0': Wall Sign
+  '69;0': Lever
+  '70;0': Stone Pressure Plate
+  '71;0': Iron Door
+  '72;0': Wooden Pressure Plate
+  '73;0': Redstone Ore
+  '74;0': Glowing Redstone Ore
+  '75;0': Redstone Torch (off)
+  '76;0': Redstone Torch (on)
+  '77;0': Button
+  '78;0': Snow
+  '79;0': Ice
+  '80;0': Snow Block
+  '81;0': Cactus
+  '82;0': Clay Block
+  '83;0': Sugar Cane
+  '84;0': Jukebox
+  '85;0': Fence
+  '86;0': Pumpkin
+  '87;0': Netherrack
+  '88;0': Soul Sand
+  '89;0': Glowstone Block
+  '90;0': Portal
+  '91;0': 'Jack-O-Lantern'
+  '92;0': Cake Block
+  '93;0': Redstone Repeater (off)
+  '94;0': Redstone Repeater (on)
+  '95;0': Locked Chest
+  '96;0': Trapdoor
+  '97;0': Stone Hidden Silverfish
+  '97;1': Cobblestone Hidden Silverfish
+  '97;2': Stone Brick Hidden Silverfish
+  '98;0': Stone Bricks
+  '98;1': Mossy Stone Bricks
+  '98;2': Cracked Stone Bricks
+  '98;3': Circle Stone Bricks
+  '99;0': Huge Brown Mushroom
+  '100;0': Huge Red Mushroom
+  '101;0': Iron Bars
+  '102;0': Glass Pane
+  '103;0': Melon
+  '104;0': Pumpkin Stem
+  '105;0': Melon Stem
+  '106;0': Vines
+  '107;0': Fence Gate
+  '108;0': Brick Stairs
+  '109;0': Stone Brick Stairs
+  '110;0': Mycelium
+  '111;0': Lily Pad
+  '112;0': Nether Brick
+  '113;0': Nether Brick Fence
+  '114;0': Nether Brick Stairs
+  '115;0': Nether Wart
+  '116;0': Enchantment Table
+  '117;0': Brewing Stand
+  '118;0': Cauldron
+  '119;0': End Portal
+  '120;0': End Portal Frame
+  '121;0': End Stone
+  '122;0': Dragon Egg
+  '123;0': Redstone Lamp (off)
+  '124;0': Redstone Lamp (on)
+  '256;0': Iron Shovel
+  '257;0': Iron Pickaxe
+  '258;0': Iron Axe
+  '259;0': Flint and Steel
+  '260;0': Red Apple
+  '261;0': Bow
+  '262;0': Arrow
+  '263;0': Coal
+  '263;1': Charcoal
+  '264;0': Diamond
+  '265;0': Iron Ingot
+  '266;0': Gold Ingot
+  '267;0': Iron Sword
+  '268;0': Wooden Sword
+  '269;0': Wooden Shovel
+  '270;0': Wooden Pickaxe
+  '271;0': Wooden Axe
+  '272;0': Stone Sword
+  '273;0': Stone Shovel
+  '274;0': Stone Pickaxe
+  '275;0': Stone Axe
+  '276;0': Diamond Sword
+  '277;0': Diamond Shovel
+  '278;0': Diamond Pickaxe
+  '279;0': Diamond Axe
+  '280;0': Stick
+  '281;0': Bowl
+  '282;0': Mushroom Soup
+  '283;0': Gold Sword
+  '284;0': Gold Shovel
+  '285;0': Gold Pickaxe
+  '286;0': Gold Axe
+  '287;0': String
+  '288;0': Feather
+  '289;0': Gunpowder
+  '290;0': Wooden Hoe
+  '291;0': Stone Hoe
+  '292;0': Iron Hoe
+  '293;0': Diamond Hoe
+  '294;0': Gold Hoe
+  '295;0': Seeds
+  '296;0': Wheat
+  '297;0': Bread
+  '298;0': Leather Cap
+  '299;0': Leather Tunic
+  '300;0': Leather Pants
+  '301;0': Leather Boots
+  '302;0': Chain Helmet
+  '303;0': Chain Chestplate
+  '304;0': Chain Leggings
+  '305;0': Chain Boots
+  '306;0': Iron Helmet
+  '307;0': Iron Chestplate
+  '308;0': Iron Leggings
+  '309;0': Iron Boots
+  '310;0': Diamond Helmet
+  '311;0': Diamond Chestplate
+  '312;0': Diamond Leggings
+  '313;0': Diamond Boots
+  '314;0': Gold Helmet
+  '315;0': Gold Chestplate
+  '316;0': Gold Leggings
+  '317;0': Gold Boots
+  '318;0': Flint
+  '319;0': Raw Porkchop
+  '320;0': Cooked Porkchop
+  '321;0': Painting
+  '322;0': Golden Apple
+  '323;0': Sign
+  '324;0': Wooden Door
+  '325;0': Empty Bucket
+  '326;0': Water Bucket
+  '327;0': Lava Bucket
+  '328;0': Minecart
+  '329;0': Saddle
+  '330;0': Iron Door
+  '331;0': Redstone Dust
+  '332;0': Snowball
+  '333;0': Boat
+  '334;0': Leather
+  '335;0': Milk Bucket
+  '336;0': Clay Brick
+  '337;0': Clay
+  '338;0': Sugar Cane
+  '339;0': Paper
+  '340;0': Book
+  '341;0': Slimeball
+  '342;0': Minecart with Chest
+  '343;0': Minecart with Furnace
+  '344;0': Chicken Egg
+  '345;0': Compass
+  '346;0': Fishing Rod
+  '347;0': Clock
+  '348;0': Glowstone Dust
+  '349;0': Raw Fish
+  '350;0': Cooked Fish
+  '351;0': Ink Sac
+  '351;1': Rose Red
+  '351;2': Cactus Green
+  '351;3': Cocoa Beans
+  '351;4': Lapis Lazuli
+  '351;5': Purple Dye
+  '351;6': Cyan Dye
+  '351;7': Light Gray Dye
+  '351;8': Gray Dye
+  '351;9': Pink Dye
+  '351;10': Lime Dye
+  '351;11': Dandelion Yellow
+  '351;12': Light Blue Dye
+  '351;13': Magenta Dye
+  '351;14': Orange Dye
+  '351;15': Bone Meal
+  '352;0': Bone
+  '353;0': Sugar
+  '354;0': Cake
+  '355;0': Bed
+  '356;0': Redstone Repeater
+  '357;0': Cookie
+  '358;0': Map
+  '359;0': Shears
+  '360;0': Melon Slice
+  '361;0': Pumpkin Seeds
+  '362;0': Melon Seeds
+  '363;0': Raw Beef
+  '364;0': Steak
+  '365;0': Raw Chicken
+  '366;0': Fried Chicken
+  '367;0': Rotten Flesh
+  '368;0': Ender pearl
+  '369;0': Blaze Rod
+  '370;0': Ghast Tear
+  '371;0': Gold Nugget
+  '372;0': Nether Wart
+  '373;0': Water Bottle
+  '373;16': Awkward Potion
+  '373;32': Thick Potion
+  '373;64': Mundane Potion (extended)
+  '373;8192': Mundane Potion
+  '373;8193': Potion of Regeneration
+  '373;8257': Potion of Regeneration (extended)
+  '373;8225': Potion of Regeneration II
+  '373;8289': Potion of Regeneration II (extended)
+  '373;8194': Potion of Swiftness
+  '373;8258': Potion of Swiftness (extended)
+  '373;8226': Potion of Swiftness II
+  '373;8290': Potion of Swiftness II (extended)
+  '373;8195': Potion of Fire Resistance
+  '373;8259': Potion of Fire Resistance (extended)
+  '373;8227': Potion of Fire Resistance (reverted) 
+  '373;8197': Potion of Healing
+  '373;8261': Potion of Healing (reverted)
+  '373;8229': Potion of Healing II
+  '373;8201': Potion of Strength
+  '373;8265': Potion of Strength (extended)
+  '373;8233': Potion of Strength II
+  '373;8297': Potion of Strength II (extended)
+  '373;8196': Potion of Poison
+  '373;8260': Potion of Poison (extended)
+  '373;8228': Potion of Poison II
+  '373;8292': Potion of Poison II (extended)
+  '373;8200': Potion of Weakness
+  '373;8264': Potion of Weakness (extended)
+  '373;8232': Potion of Weakness (reverted)
+  '373;8202': Potion of Slowness
+  '373;8266': Potion of Slowness (extended)
+  '373;8234': Potion of Slowness (reverted)
+  '373;8204': Potion of Harming
+  '373;8268': Potion of Harming (reverted)
+  '373;8236': Potion of Harming II
+  '373;16384': Splash Mundane Potion
+  '373;16385': Splash Potion of Regeneration
+  '373;16449': Splash Potion of Regeneration (extended)
+  '373;16417': Splash Potion of Regeneration II
+  '373;16386': Splash Potion of Swiftness
+  '373;16450': Splash Potion of Swiftness (extended)
+  '373;16418': Splash Potion of Swiftness II
+  '373;16387': Splash Potion of Fire Resistance
+  '373;16451': Splash Potion of Fire Resistance (extended)
+  '373;16389': Splash Potion of Healing
+  '373;16421': Splash Potion of Healing II
+  '373;16393': Splash Potion of Strength
+  '373;16457': Splash Potion of Strength (extended)
+  '373;16425': Splash Potion of Strength II
+  '373;16388': Splash Potion of Poison
+  '373;16452': Splash Potion of Poison (extended)
+  '373;16420': Splash Potion of Poison II
+  '373;16392': Splash Potion of Weakness
+  '373;16456': Splash Potion of Poison (extended)
+  '373;16394': Splash Potion of Slowness
+  '373;16458': Splash Potion of Slowness (extended)
+  '373;16396': Splash Potion of Harming
+  '373;16428': Splash Potion of Harming II
+  '374;0': Glass Bottle
+  '375;0': Spider Eye
+  '376;0': Fermented Spider Eye
+  '377;0': Blaze Powder
+  '378;0': Magma Cream
+  '379;0': Brewing Stand
+  '380;0': Cauldron
+  '381;0': Eye of Ender
+  '382;0': Glistering Melon
+  '383;0': Spawn Egg
+  '383;50': Creeper Spawn Egg
+  '383;51': Skeleton Spawn Egg
+  '383;52': Spider Spawn Egg
+  '383;54': Zombie Spawn Egg
+  '383;55': Slime Spawn Egg
+  '383;56': Ghast Spawn Egg
+  '383;57': Zombie Pigman Spawn Egg
+  '383;58': Enderman Spawn Egg
+  '383;59': Cave Spider Spawn Egg
+  '383;60': Silverfish Spawn Egg
+  '383;61': Blaze Spawn Egg
+  '383;62': Magma Cube Spawn Egg
+  '383;90': Pig Spawn Egg
+  '383;91': Sheep Spawn Egg
+  '383;92': Cow Spawn Egg
+  '383;93': Chicken Spawn Egg
+  '383;94': Squid Spawn Egg
+  '383;95': Wolf Spawn Egg
+  '383;96': Mooshroom Spawn Egg
+  '383;98': Ocelot Spawn Egg
+  '383;120': Villager Spawn Egg
+  '384;0': Bottle o' Enchanting
+  '385;0': Fire Charge
+  '2256;0': 13 Disc (yellow)
+  '2257;0': Cat Disc (green)
+  '2258;0': Blocks Disc (orange)
+  '2259;0': Chirp Disc (red)
+  '2260;0': Far Disc (lime)
+  '2261;0': Mall Disc (purple)
+  '2262;0': Mellohi Disc (pink)
+  '2263;0': Stal Disc (black)
+  '2264;0': Strad Disc (white)
+  '2265;0': Ward Disc (dark green)
+  '2266;0': 11 Disc (broken)
+
+enchantments:
+  'UNKNOWN': Unknown
+  '0': Protection
+  '1': Fire Protection
+  '2': Feather Falling
+  '3': Blast Protection
+  '4': Projectile Protection
+  '5': Respiration
+  '6': Aqua Afinity
+  '16': Sharpness
+  '17': Smite
+  '18': Bane of Arthropods
+  '19': Knockback
+  '20': Fire Aspect
+  '21': Looting
+  '32': Efficiency
+  '33': Silk Touch
+  '34': Unbreaking
+  '35': Fortune
+  '48': Power
+  '49': Punch
+  '50': Flame
+  '51': Infinity
+  
+enchantmentlevels:
+  'UNKNOWN': '?'
+  '1': I
+  '2': II
+  '3': III
+  '4': IV
+  '5': V
+
+messages:
+  'ENCHANTMENT_LEVEL': ' Lvl. '
+  'ENCHANTED': 'Enchanted: '
+  'THAT_IS': 'You are looking at: '
+  'THIS_IS': 'You are holding: '
+  'CONSOLE_ERROR': 'WhatIsIt? Console can not tell.'
+  'HAS_BEEN_ENABLED': ' has been enabled.'
+  'HAS_BEEN_DISABLED': ' has been disabled.'
+  'UNKNOWN_OBJECT': Unknown
+  'CANNOT_SAVE_NAMES_DEFAULT': ' Cannot save names.yml'

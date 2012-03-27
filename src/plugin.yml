@@ -1,0 +1,31 @@
+name: WhatIsIt
+version: 1.dev
+description: Gets names of stuff.
+author: flobi
+website: http://www.hollowmatrix.com/
+
+main: com.flobi.WhatIsIt.WhatIsIt
+database: false
+
+commands:
+  wis:
+    description: What Is thiS
+    permission: whatisit.this
+    usage: /<command> displays info about held item. 
+  wit:
+    description: What Is thaT
+    permission: whatisit.that
+    usage: /<command> displays info about target behind crosshairs. 
+
+permissions:
+  whatisit.*:
+    description: All WhatIsIt commands.
+    children:
+      whatisit.this: true
+      whatisit.that: true
+  whatisit.this:
+    description: What Is thiS
+    default: true
+  whatisit.that:
+    description: What Is thaT
+    default: true

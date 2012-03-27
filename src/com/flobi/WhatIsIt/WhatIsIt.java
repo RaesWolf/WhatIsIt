@@ -137,14 +137,23 @@ public class WhatIsIt extends JavaPlugin {
 		return namesConfig.getString("messages.UNKNOWN_OBJECT");
 	}
 	public static String enchantmentName(Entry<Enchantment, Integer> enchantment) {
+		if (enchantment == null) {
+			return namesConfig.getString("enchantments.UNKNOWN");
+		}
 		return enchantmentName(enchantment.getKey(), enchantment.getValue());
 	}
 	public static String enchantmentName(Enchantment enchantment, Integer level) {
+		if (enchantment == null) {
+			return namesConfig.getString("enchantments.UNKNOWN");
+		}
 		return enchantmentName(enchantment) + 
 			namesConfig.getString("messages.ENCHANTMENT_LEVEL") + 
 			enchantmentLevelName(level);
 	}
 	public static String enchantmentName(Enchantment enchantment) {
+		if (enchantment == null) {
+			return namesConfig.getString("enchantments.UNKNOWN");
+		}
 		String name = namesConfig.getString("enchantments." + Integer.toString(enchantment.getId()));
 		if (name == null) {
 			name = namesConfig.getString("enchantments.UNKNOWN");
@@ -159,14 +168,22 @@ public class WhatIsIt extends JavaPlugin {
 		return name;
 	}
 	public static String blockName(Block block) {
+		if (block == null) {
+			return namesConfig.getString("items.UNKNOWN");
+		}
 		ItemStack item = new ItemStack(block.getType(), 1, (short) 0, block.getData());
 		return itemName(item);
 	}
 	public static String playerName(Player player) {
+		if (player == null) {
+			return namesConfig.getString("entities.UNKNOWN");
+		}
 		return player.getName();
 	}
 	public static String entityName(Entity entity) {
-		if (entity.getType() == EntityType.SPLASH_POTION) {
+		if (entity == null) {
+			return namesConfig.getString("entities.UNKNOWN");
+		} else if (entity.getType() == EntityType.SPLASH_POTION) {
 			Item item = (Item) entity;
 			return itemName(item.getItemStack());
 		} else if (entity.getType() == EntityType.DROPPED_ITEM) {
@@ -218,6 +235,9 @@ public class WhatIsIt extends JavaPlugin {
 		}
 	}
 	public static String itemName(ItemStack item) {
+		if (item == null) {
+			return namesConfig.getString("items.UNKNOWN");
+		}
 		String typeId = "";
 		String data = "";
 		String name = "";

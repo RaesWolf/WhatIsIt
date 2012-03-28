@@ -11,11 +11,19 @@ commands:
   wis:
     description: What Is thiS
     permission: whatisit.this
-    usage: /<command> displays info about held item. 
+    usage: |
+      /<command> - displays info about held item. 
+      /<command> itis [name] - Sets the name and saves named.yml. 
+      /<command> reload - Reloads named.yml and displays item info. 
+
   wit:
     description: What Is thaT
     permission: whatisit.that
-    usage: /<command> displays info about target behind crosshairs. 
+    usage: |
+      /<command> - displays info about target behind crosshairs. 
+      /<command> itis [name] - Sets the name and saves named.yml. 
+      /<command> reload - Reloads named.yml and displays item info. 
+  
 
 permissions:
   whatisit.*:
@@ -23,9 +31,14 @@ permissions:
     children:
       whatisit.this: true
       whatisit.that: true
+      whatisit.admin: true
   whatisit.this:
     description: What Is thiS
     default: true
   whatisit.that:
     description: What Is thaT
     default: true
+  whatisit.admin:
+    description: WhatIsIt Admin
+    default: false
+    

@@ -515,3 +515,9 @@ messages:
   'HAS_BEEN_DISABLED': ' has been disabled.'
   'UNKNOWN_OBJECT': Unknown
   'CANNOT_SAVE_NAMES_DEFAULT': ' Cannot save names.yml'
+  'CANNOT_SAVE_NAMES': ' Cannot save names.yml'
+  'NAMES_RELOADED': 'names.yml has been reloaded.'
+  'THIS_IS_NOW': 'Item name has been set to: '
+
+config:
+  display-data-values: true

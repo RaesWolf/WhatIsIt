@@ -41,20 +41,19 @@ public class WhatIsIt extends JavaPlugin {
 	private static InputStream defNamesConfigStream;
 	private static FileConfiguration namesConfig = null;
 
-	private static String pluginName;
 	private static File dataFolder;
 	private static Permission perms = null;
 	
 
 	public void onEnable() {
-		pluginName = getDescription().getName();
+		getDescription().getName();
 		dataFolder = getDataFolder();
 		defConfigStream = getResource("config.yml");
 		defNamesConfigStream = getResource("names.yml");
 		loadConfig();
 
 		if (getServer().getPluginManager().getPlugin("Vault") == null) {
-			log.info(config.getString("messages.prefix") + config.getString("messages.no-vault"));
+			log.info(chatPrep(config.getString("messages.no-vault")));
 			getServer().getPluginManager().disablePlugin(this);
 		}
 
@@ -62,10 +61,10 @@ public class WhatIsIt extends JavaPlugin {
 
 		showDataValues = namesConfig.getBoolean("config.display-data-values");
 
-		log.info(config.getString("messages.prefix") + config.getString("messages.has-been-enabled"));
+		log.info(chatPrep(config.getString("messages.has-been-enabled")));
 	}
 	public void onDisable() { 
-		log.info(config.getString("messages.prefix") + config.getString("messages.has-been-disabled"));
+		log.info(chatPrep(config.getString("messages.has-been-disabled")));
 	}
 	
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -73,7 +72,7 @@ public class WhatIsIt extends JavaPlugin {
     	if (sender instanceof Player) {
     		player = (Player) sender;
     	} else {
-			sender.sendMessage(namesConfig.getString("messages.console-error"));
+			sender.sendMessage(chatPrep(namesConfig.getString("messages.console-error")));
 			return true;
     	}
     	String newName = null;
@@ -100,23 +99,20 @@ public class WhatIsIt extends JavaPlugin {
     	}
     	if (cmd.getName().equalsIgnoreCase("wis")) {
     		if(!perms.has(player, "whatisit.use")) {
-    			player.sendMessage(config.getString("messages.no-permission"));
+    			player.sendMessage(chatPrep(config.getString("messages.no-permission")));
     			return false;
     		}
     		ItemStack heldItem = player.getItemInHand();
-    		player.sendMessage(config.getString("messages.this-is") + WhatIsIt.itemName(heldItem, showDataValues, newName));
+    		player.sendMessage(chatPrep(config.getString("messages.this-is") + WhatIsIt.itemName(heldItem, showDataValues, newName)));
     		Map<Enchantment, Integer> enchantments = heldItem.getEnchantments();
     		for (Entry<Enchantment, Integer> enchantment : enchantments.entrySet()) {
-    			String message = 
-    				config.getString("messages.enchanted") + enchantmentName(enchantment, showDataValues, newName);
-    			
-   				player.sendMessage(message);
+   				player.sendMessage(chatPrep(config.getString("messages.enchanted") + enchantmentName(enchantment, showDataValues, newName)));
     		}				
     		return true;
     		
     	} else if (cmd.getName().equalsIgnoreCase("wit")) {
     		if(!perms.has(player, "whatisit.use")) {
-    			player.sendMessage(config.getString("messages.no-permission"));
+    			player.sendMessage(chatPrep(config.getString("messages.no-permission")));
     			return false;
     		}
     		if (args.length > 0 && args[0].equalsIgnoreCase("reload")) {
@@ -124,10 +120,14 @@ public class WhatIsIt extends JavaPlugin {
     			loadConfig();
     		}
     		Object targetedObject = getTarget(player);
-    		player.sendMessage(config.getString("messages.that-is") + WhatIsIt.name(targetedObject, showDataValues, newName));
+    		player.sendMessage(chatPrep(config.getString("messages.that-is") + WhatIsIt.name(targetedObject, showDataValues, newName)));
     		return true;
     	}
     	return false;
+    }
+    private static String chatPrep(String message) {
+    	message = config.getString("messages.prefix") + message;
+    	return message.replaceAll("&([0-9a-fA-F])", "§$1");
     }
     private static Object getTarget(Player entity) {
     	int range = 100;
@@ -199,10 +199,7 @@ public class WhatIsIt extends JavaPlugin {
 		}
     }
 
-    private static String name(Object whatToIdentify, Boolean showData) {
-    	return name(whatToIdentify, false, null);
-    }
-	private static String name(Object whatToIdentify, Boolean showData, String newName) {
+    private static String name(Object whatToIdentify, Boolean showData, String newName) {
 		if (whatToIdentify instanceof Entity) {
 			return entityName((Entity) whatToIdentify, showData, newName);
 		}

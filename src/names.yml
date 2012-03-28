@@ -505,21 +505,3 @@ enchantmentlevels:
   '4': IV
   '5': V
 
-messages:
-  'ENCHANTMENT_LEVEL': ' Lvl. '
-  'ENCHANTED': 'Enchanted: '
-  'THAT_IS': 'You are looking at: '
-  'THIS_IS': 'You are holding: '
-  'CONSOLE_ERROR': 'WhatIsIt? Console can not tell.'
-  'HAS_BEEN_ENABLED': ' has been enabled.'
-  'HAS_BEEN_DISABLED': ' has been disabled.'
-  'UNKNOWN_OBJECT': Unknown
-  'CANNOT_SAVE_NAMES_DEFAULT': ' Cannot save names.yml'
-  'CANNOT_SAVE_NAMES': ' Cannot save names.yml'
-  'NAMES_RELOADED': 'names.yml has been reloaded.'
-  'THIS_IS_NOW': 'Item name has been set to: '
-  'NO_VAULT': 'Disabled due to no Vault dependency found!'
-  'NO_PERMISSION': 'You lack permission for this.'
-
-config:
-  display-data-values: true

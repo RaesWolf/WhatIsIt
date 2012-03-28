@@ -11,7 +11,7 @@ database: false
 commands:
   wis:
     description: What Is thiS
-    permission: whatisit.this
+    permission: whatisit.use
     usage: |
       /<command> - displays info about held item. 
       /<command> itis [name] - Sets the name and saves named.yml. 
@@ -19,7 +19,7 @@ commands:
 
   wit:
     description: What Is thaT
-    permission: whatisit.that
+    permission: whatisit.use
     usage: |
       /<command> - displays info about target behind crosshairs. 
       /<command> itis [name] - Sets the name and saves named.yml. 
@@ -35,10 +35,10 @@ permissions:
       whatisit.admin: true
   whatisit.this:
     description: What Is thiS
-    default: true
+    default: false
   whatisit.that:
     description: What Is thaT
-    default: true
+    default: false
   whatisit.admin:
     description: WhatIsIt Admin
     default: false

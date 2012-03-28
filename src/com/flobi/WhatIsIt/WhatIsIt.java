@@ -32,33 +32,40 @@ import org.bukkit.util.Vector;
 
 public class WhatIsIt extends JavaPlugin {
 	private static final Logger log = Logger.getLogger("Minecraft");
-	private static FileConfiguration namesConfig = null;
-	private static File namesConfigFile = null;
+
+	private static File configFile = null;
+	private static InputStream defConfigStream;
+	private static FileConfiguration config = null;
 	private static boolean showDataValues = false;
+	private static File namesConfigFile = null;
+	private static InputStream defNamesConfigStream;
+	private static FileConfiguration namesConfig = null;
+
 	private static String pluginName;
 	private static File dataFolder;
-	private static InputStream defConfigStream;
 	private static Permission perms = null;
 	
 
 	public void onEnable() {
-		if (getServer().getPluginManager().getPlugin("Vault") == null) {
-			log.info("[" + getDescription().getName() + "]" + namesConfig.getString("messages.NO_VAULT"));
-			getServer().getPluginManager().disablePlugin(this);
-		}
 		pluginName = getDescription().getName();
 		dataFolder = getDataFolder();
-		defConfigStream = getResource("names.yml");
+		defConfigStream = getResource("config.yml");
+		defNamesConfigStream = getResource("names.yml");
+		loadConfig();
+
+		if (getServer().getPluginManager().getPlugin("Vault") == null) {
+			log.info(config.getString("messages.prefix") + config.getString("messages.no-vault"));
+			getServer().getPluginManager().disablePlugin(this);
+		}
 
         setupPermissions();
-		loadNamesConfig();
 
 		showDataValues = namesConfig.getBoolean("config.display-data-values");
 
-		log.info("[" + getDescription().getName() + "]" + namesConfig.getString("messages.HAS_BEEN_ENABLED"));
+		log.info(config.getString("messages.prefix") + config.getString("messages.has-been-enabled"));
 	}
 	public void onDisable() { 
-		log.info("[" + getDescription().getName() + "]" + namesConfig.getString("messages.HAS_BEEN_DISABLED"));
+		log.info(config.getString("messages.prefix") + config.getString("messages.has-been-disabled"));
 	}
 	
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -66,7 +73,7 @@ public class WhatIsIt extends JavaPlugin {
     	if (sender instanceof Player) {
     		player = (Player) sender;
     	} else {
-			sender.sendMessage(namesConfig.getString("messages.CONSOLE_ERROR"));
+			sender.sendMessage(namesConfig.getString("messages.console-error"));
 			return true;
     	}
     	String newName = null;
@@ -86,38 +93,38 @@ public class WhatIsIt extends JavaPlugin {
 	    				}
 	    			} else if (args[0].equalsIgnoreCase("reload")) {
 		    			namesConfig = null;
-		    			loadNamesConfig();
+		    			loadConfig();
 	    			}
 	    		}
     		}
     	}
     	if (cmd.getName().equalsIgnoreCase("wis")) {
-    		if(!perms.has(player, "whatisit.this")) {
-    			player.sendMessage(namesConfig.getString("messages.NO_PERMISSION"));
+    		if(!perms.has(player, "whatisit.use")) {
+    			player.sendMessage(config.getString("messages.no-permission"));
     			return false;
     		}
     		ItemStack heldItem = player.getItemInHand();
-    		player.sendMessage(namesConfig.getString("messages.THIS_IS") + WhatIsIt.itemName(heldItem, showDataValues, newName));
+    		player.sendMessage(config.getString("messages.this-is") + WhatIsIt.itemName(heldItem, showDataValues, newName));
     		Map<Enchantment, Integer> enchantments = heldItem.getEnchantments();
     		for (Entry<Enchantment, Integer> enchantment : enchantments.entrySet()) {
     			String message = 
-    				namesConfig.getString("messages.ENCHANTED") + enchantmentName(enchantment, showDataValues, newName);
+    				config.getString("messages.enchanted") + enchantmentName(enchantment, showDataValues, newName);
     			
    				player.sendMessage(message);
     		}				
     		return true;
     		
     	} else if (cmd.getName().equalsIgnoreCase("wit")) {
-    		if(!perms.has(player, "whatisit.that")) {
-    			player.sendMessage(namesConfig.getString("messages.NO_PERMISSION"));
+    		if(!perms.has(player, "whatisit.use")) {
+    			player.sendMessage(config.getString("messages.no-permission"));
     			return false;
     		}
     		if (args.length > 0 && args[0].equalsIgnoreCase("reload")) {
     			namesConfig = null;
-    			loadNamesConfig();
+    			loadConfig();
     		}
     		Object targetedObject = getTarget(player);
-    		player.sendMessage(namesConfig.getString("messages.THAT_IS") + WhatIsIt.name(targetedObject, showDataValues, newName));
+    		player.sendMessage(config.getString("messages.that-is") + WhatIsIt.name(targetedObject, showDataValues, newName));
     		return true;
     	}
     	return false;
@@ -147,23 +154,40 @@ public class WhatIsIt extends JavaPlugin {
         	}
     	}
     }
-    private static void loadNamesConfig() {
+    private static void loadConfig() {
 		YamlConfiguration defConfig = null;
+	    if (configFile == null) {
+	    	configFile = new File(dataFolder, "config.yml");
+	    }
+	    config = YamlConfiguration.loadConfiguration(configFile);
+	 
+	    // Look for defaults in the jar
+	    if (defConfigStream != null) {
+	        defConfig = YamlConfiguration.loadConfiguration(defConfigStream);
+	        config.setDefaults(defConfig);
+	    }
+	    if (!configFile.exists() && defConfig != null) {
+	    	try {
+	    		defConfig.save(configFile);
+			} catch(IOException ex) {
+				log.severe(config.getString("messages.prefix") + config.getString("messages.cannot-save-default-config"));
+			}
+	    }
 	    if (namesConfigFile == null) {
 	    	namesConfigFile = new File(dataFolder, "names.yml");
 	    }
 	    namesConfig = YamlConfiguration.loadConfiguration(namesConfigFile);
 	 
 	    // Look for defaults in the jar
-	    if (defConfigStream != null) {
-	        defConfig = YamlConfiguration.loadConfiguration(defConfigStream);
+	    if (defNamesConfigStream != null) {
+	        defConfig = YamlConfiguration.loadConfiguration(defNamesConfigStream);
 	        namesConfig.setDefaults(defConfig);
 	    }
 	    if (!namesConfigFile.exists() && defConfig != null) {
 	    	try {
 	    		defConfig.save(namesConfigFile);
 			} catch(IOException ex) {
-				log.severe("[" + dataFolder.getName() + "]" + namesConfig.getString("messages.CANNOT_SAVE_NAMES_DEFAULT"));
+				log.severe(config.getString("messages.prefix") + config.getString("messages.cannot-save-default-names"));
 			}
 	    }
     }
@@ -171,7 +195,7 @@ public class WhatIsIt extends JavaPlugin {
     	try {
     		namesConfig.save(namesConfigFile);
 		} catch(IOException ex) {
-			log.severe("[" + pluginName + "]" + namesConfig.getString("messages.CANNOT_SAVE_NAMES"));
+			log.severe(config.getString("messages.prefix") + config.getString("messages.cannot-save-names"));
 		}
     }
 
@@ -191,7 +215,7 @@ public class WhatIsIt extends JavaPlugin {
 		if (whatToIdentify instanceof ItemStack) {
 			return itemName((ItemStack) whatToIdentify, showData, newName);
 		}
-		return namesConfig.getString("messages.UNKNOWN_OBJECT");
+		return config.getString("messages.unknown-object");
 	}
 	
 	// ----- ENCHANTMENT NAMES -----
@@ -218,7 +242,7 @@ public class WhatIsIt extends JavaPlugin {
 			return namesConfig.getString("enchantments.UNKNOWN");
 		}
 		return enchantmentName(enchantment) + 
-			namesConfig.getString("messages.ENCHANTMENT_LEVEL") + 
+			config.getString("messages.enchantment_level") + 
 			enchantmentLevelName(level);
 	}
 	public static String enchantmentName(Enchantment enchantment) {
@@ -328,8 +352,6 @@ public class WhatIsIt extends JavaPlugin {
 			data = "0";
 		}
 		
-		log.info("Entity: " + typeId + ";" + data);
-		
 		if (newName != null) {
 			namesConfig.set("entities." + typeId + ";" + data, newName);
 			saveNamesConfig();
@@ -365,14 +387,11 @@ public class WhatIsIt extends JavaPlugin {
 		typeId = Integer.toString(item.getTypeId());
 		if (item.getDurability() > 0) {
 			data = Short.toString(item.getDurability());
-			log.info("Item damage: " + data);
 		} else if (item.getData().getData() > 0) {
 			data = Byte.toString(item.getData().getData());
 		} else {
 			data = "0";
 		}
-		
-//		log.info("Item: " + typeId + ";" + data);
 		
 		if (newName != null) {
 			namesConfig.set("items." + typeId + ";" + data, newName);

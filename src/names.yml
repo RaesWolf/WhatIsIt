@@ -518,6 +518,8 @@ messages:
   'CANNOT_SAVE_NAMES': ' Cannot save names.yml'
   'NAMES_RELOADED': 'names.yml has been reloaded.'
   'THIS_IS_NOW': 'Item name has been set to: '
+  'NO_VAULT': 'Disabled due to no Vault dependency found!'
+  'NO_PERMISSION': 'You lack permission for this.'
 
 config:
   display-data-values: true

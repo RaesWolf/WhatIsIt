@@ -8,8 +8,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.logging.Logger;
 
+import net.milkbowl.vault.permission.Permission;
+
 import org.apache.commons.lang.StringUtils;
-import org.bukkit.Server;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -25,8 +26,8 @@ import org.bukkit.entity.Sheep;
 import org.bukkit.entity.Villager;
 import org.bukkit.entity.Wolf;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.potion.Potion;
 import org.bukkit.util.Vector;
 
 public class WhatIsIt extends JavaPlugin {
@@ -37,14 +38,21 @@ public class WhatIsIt extends JavaPlugin {
 	private static String pluginName;
 	private static File dataFolder;
 	private static InputStream defConfigStream;
+	private static Permission perms = null;
 	
 
 	public void onEnable() {
+		if (getServer().getPluginManager().getPlugin("Vault") == null) {
+			log.info("[" + getDescription().getName() + "]" + namesConfig.getString("messages.NO_VAULT"));
+			getServer().getPluginManager().disablePlugin(this);
+		}
 		pluginName = getDescription().getName();
 		dataFolder = getDataFolder();
 		defConfigStream = getResource("names.yml");
 
+        setupPermissions();
 		loadNamesConfig();
+
 		showDataValues = namesConfig.getBoolean("config.display-data-values");
 
 		log.info("[" + getDescription().getName() + "]" + namesConfig.getString("messages.HAS_BEEN_ENABLED"));
@@ -67,21 +75,27 @@ public class WhatIsIt extends JavaPlugin {
     		cmd.getName().equalsIgnoreCase("wis") ||
         	cmd.getName().equalsIgnoreCase("wit")
     	) {
-    		if (args.length > 0) {
-    			if (args[0].equalsIgnoreCase("itis")) {
-    				String[] tmpArgs = (String[]) Array.newInstance(String.class, args.length - 1);
-    				System.arraycopy(args, 1, tmpArgs, 0, args.length - 1);
-    				newName = StringUtils.join(tmpArgs, " ");
-    				if (newName.length() == 0) {
-    					newName = null;
-    				}
-    			} else if (args[0].equalsIgnoreCase("reload")) {
-	    			namesConfig = null;
-	    			loadNamesConfig();
-    			}
+    		if(perms.has(player, "whatisit.admin")) {
+	    		if (args.length > 0) {
+	    			if (args[0].equalsIgnoreCase("itis")) {
+	    				String[] tmpArgs = (String[]) Array.newInstance(String.class, args.length - 1);
+	    				System.arraycopy(args, 1, tmpArgs, 0, args.length - 1);
+	    				newName = StringUtils.join(tmpArgs, " ");
+	    				if (newName.length() == 0) {
+	    					newName = null;
+	    				}
+	    			} else if (args[0].equalsIgnoreCase("reload")) {
+		    			namesConfig = null;
+		    			loadNamesConfig();
+	    			}
+	    		}
     		}
     	}
     	if (cmd.getName().equalsIgnoreCase("wis")) {
+    		if(!perms.has(player, "whatisit.this")) {
+    			player.sendMessage(namesConfig.getString("messages.NO_PERMISSION"));
+    			return false;
+    		}
     		ItemStack heldItem = player.getItemInHand();
     		player.sendMessage(namesConfig.getString("messages.THIS_IS") + WhatIsIt.itemName(heldItem, showDataValues, newName));
     		Map<Enchantment, Integer> enchantments = heldItem.getEnchantments();
@@ -94,6 +108,10 @@ public class WhatIsIt extends JavaPlugin {
     		return true;
     		
     	} else if (cmd.getName().equalsIgnoreCase("wit")) {
+    		if(!perms.has(player, "whatisit.that")) {
+    			player.sendMessage(namesConfig.getString("messages.NO_PERMISSION"));
+    			return false;
+    		}
     		if (args.length > 0 && args[0].equalsIgnoreCase("reload")) {
     			namesConfig = null;
     			loadNamesConfig();
@@ -373,5 +391,9 @@ public class WhatIsIt extends JavaPlugin {
 		}
 		return name;
 	}
-
+    private boolean setupPermissions() {
+        RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
+        perms = rsp.getProvider();
+        return perms != null;
+    }
 }

@@ -3,6 +3,7 @@ version: 1.a.0
 description: Gets names of stuff.
 author: flobi
 website: http://www.hollowmatrix.com/
+depend: [Vault]
 
 main: com.flobi.WhatIsIt.WhatIsIt
 database: false

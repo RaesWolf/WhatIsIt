@@ -65,7 +65,7 @@ public class WhatIsIt extends JavaPlugin {
 
         setupPermissions();
 
-		showDataValues = namesConfig.getBoolean("config.display-data-values");
+		showDataValues = config.getBoolean("config.display-data-values");
 
 		console.sendMessage(chatPrep(config.getString("messages.has-been-enabled")));
 	}
@@ -75,6 +75,7 @@ public class WhatIsIt extends JavaPlugin {
 	
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
     	Player player = null;
+    	String iATR = "XXXITEMXAMPERSANDXTEMPRARYXREPLACEMENTXXX";
     	if (sender instanceof Player) {
     		player = (Player) sender;
     	} else {
@@ -109,10 +110,10 @@ public class WhatIsIt extends JavaPlugin {
     			return false;
     		}
     		ItemStack heldItem = player.getItemInHand();
-    		player.sendMessage(chatPrep(config.getString("messages.this-is") + WhatIsIt.itemName(heldItem, showDataValues, newName)));
+    		player.sendMessage(chatPrep(config.getString("messages.this-is") + WhatIsIt.itemName(heldItem, showDataValues, newName).replaceAll("&", iATR)).replaceAll(iATR, "&"));
     		Map<Enchantment, Integer> enchantments = heldItem.getEnchantments();
     		for (Entry<Enchantment, Integer> enchantment : enchantments.entrySet()) {
-   				player.sendMessage(chatPrep(config.getString("messages.enchanted") + enchantmentName(enchantment, showDataValues, newName)));
+   				player.sendMessage(chatPrep(config.getString("messages.enchanted") + enchantmentName(enchantment, showDataValues, newName).replaceAll("&", iATR)).replaceAll(iATR, "&"));
     		}				
     		return true;
     		
@@ -126,14 +127,14 @@ public class WhatIsIt extends JavaPlugin {
     			loadConfig();
     		}
     		Object targetedObject = getTarget(player);
-    		player.sendMessage(chatPrep(config.getString("messages.that-is") + WhatIsIt.name(targetedObject, showDataValues, newName)));
+    		player.sendMessage(chatPrep(config.getString("messages.that-is") + WhatIsIt.name(targetedObject, showDataValues, newName).replaceAll("&", iATR)).replaceAll(iATR, "&"));
     		return true;
     	}
     	return false;
     }
     private static String chatPrep(String message) {
     	message = config.getString("messages.prefix") + message;
-    	message = ChatColor.translateAlternateColorCodes('&', message);
+    	message = ChatColor.translateAlternateColorCodes('&', message);//message.replaceAll("&([0-9a-fA-F])", "§$1");
     	return message;
     }
     private static Object getTarget(Player entity) {
@@ -228,7 +229,7 @@ public class WhatIsIt extends JavaPlugin {
 		if (whatToIdentify instanceof ItemStack) {
 			return itemName((ItemStack) whatToIdentify, showData, newName);
 		}
-		return ChatColor.translateAlternateColorCodes('&', config.getString("messages.unknown-object"));
+		return config.getString("messages.unknown-object");
 	}
 	
 	// ----- ENCHANTMENT NAMES -----
@@ -240,7 +241,7 @@ public class WhatIsIt extends JavaPlugin {
 	}
 	private static String enchantmentName(Entry<Enchantment, Integer> enchantment, Boolean showData, String newName) {
 		if (enchantment == null) {
-			return ChatColor.translateAlternateColorCodes('&', namesConfig.getString("enchantments.UNKNOWN"));
+			return namesConfig.getString("enchantments.UNKNOWN");
 		}
 		return enchantmentName(enchantment.getKey(), enchantment.getValue());
 	}
@@ -252,12 +253,11 @@ public class WhatIsIt extends JavaPlugin {
 	}
 	private static String enchantmentName(Enchantment enchantment, Integer level, Boolean showData, String newName) {
 		if (enchantment == null) {
-			return ChatColor.translateAlternateColorCodes('&', namesConfig.getString("enchantments.UNKNOWN"));
+			return namesConfig.getString("enchantments.UNKNOWN");
 		}
-		return ChatColor.translateAlternateColorCodes('&', 
-				enchantmentName(enchantment) + 
-				config.getString("messages.enchantment-level") + 
-				enchantmentLevelName(level));
+		return enchantmentName(enchantment) + 
+			config.getString("messages.enchantment-level") + 
+			enchantmentLevelName(level);
 	}
 	public static String enchantmentName(Enchantment enchantment) {
 		return enchantmentName(enchantment, false);
@@ -267,7 +267,7 @@ public class WhatIsIt extends JavaPlugin {
 	}
 	private static String enchantmentName(Enchantment enchantment, Boolean showData, String newName) {
 		if (enchantment == null) {
-			return ChatColor.translateAlternateColorCodes('&', namesConfig.getString("enchantments.UNKNOWN"));
+			return namesConfig.getString("enchantments.UNKNOWN");
 		}
 		
 		String data = Integer.toString(enchantment.getId());
@@ -284,14 +284,14 @@ public class WhatIsIt extends JavaPlugin {
 		if (showData) {
 			name = "(" + Integer.toString(enchantment.getId()) + ") " + name;
 		}
-		return ChatColor.translateAlternateColorCodes('&', name);
+		return name;
 	}
 	public static String enchantmentLevelName(Integer level) {
 		String name = namesConfig.getString("enchantmentlevels." + Integer.toString(level));
 		if (name == null) {
 			name = namesConfig.getString("enchantmentlevels.UNKNOWN");
 		}
-		return ChatColor.translateAlternateColorCodes('&', name);
+		return name;
 	}
 	
 	// ----- BLOCK NAMES -----
@@ -303,7 +303,7 @@ public class WhatIsIt extends JavaPlugin {
 	}
 	private static String blockName(Block block, Boolean showData, String newName) {
 		if (block == null) {
-			return ChatColor.translateAlternateColorCodes('&', namesConfig.getString("items.UNKNOWN"));
+			return namesConfig.getString("items.UNKNOWN");
 		}
 		ItemStack item = new ItemStack(block.getType(), 1, (short) 0, block.getData());
 		return itemName(item, showData, newName);
@@ -312,9 +312,9 @@ public class WhatIsIt extends JavaPlugin {
 	// ----- PLAYER NAMES -----
 	private static String playerName(Player player) {
 		if (player == null) {
-			return ChatColor.translateAlternateColorCodes('&', namesConfig.getString("entities.UNKNOWN"));
+			return namesConfig.getString("entities.UNKNOWN");
 		}
-		return ChatColor.translateAlternateColorCodes('&', player.getName());
+		return player.getName();
 	}
 	
 	// ----- ENTITY NAMES -----
@@ -326,7 +326,7 @@ public class WhatIsIt extends JavaPlugin {
 	}
 	private static String entityName(Entity entity, Boolean showData, String newName) {
 		if (entity == null) {
-			return ChatColor.translateAlternateColorCodes('&', namesConfig.getString("entities.UNKNOWN"));
+			return namesConfig.getString("entities.UNKNOWN");
 		} else if (entity.getType() == EntityType.SPLASH_POTION) {
 			Item item = (Item) entity;
 			return itemName(item.getItemStack());
@@ -381,7 +381,7 @@ public class WhatIsIt extends JavaPlugin {
 		if (name == null) {
 			name = namesConfig.getString("entities.UNKNOWN");
 		}
-		return ChatColor.translateAlternateColorCodes('&', owner_prefix + name);
+		return owner_prefix + name;
 	}
 	
 	// ----- ITEM NAMES -----
@@ -393,7 +393,7 @@ public class WhatIsIt extends JavaPlugin {
 	}
 	private static String itemName(ItemStack item, Boolean showData, String newName) {
 		if (item == null) {
-			return ChatColor.translateAlternateColorCodes('&', namesConfig.getString("items.UNKNOWN"));
+			return namesConfig.getString("items.UNKNOWN");
 		}
 		String typeId = "";
 		String data = "";
@@ -422,7 +422,7 @@ public class WhatIsIt extends JavaPlugin {
 		if (name == null) {
 			name = namesConfig.getString("items.UNKNOWN");
 		}
-		return ChatColor.translateAlternateColorCodes('&', name);
+		return name;
 	}
     private boolean setupPermissions() {
         RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);

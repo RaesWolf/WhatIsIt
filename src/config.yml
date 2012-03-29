@@ -1,8 +1,11 @@
+#
+# Do not put color codes in messages.enchantment-level.
+#
 config:
   display-data-values: true
 messages:
   prefix: '&F[&AWhat&7Is&CIt&F] '
-  enchantment-level: '&7 Lvl. &B'
+  enchantment-level: ' Lvl. '
   enchanted: '&7  Enchanted with: &D'
   that-is: '&7You are looking at: &B'
   this-is: '&7You are holding: &B'
@@ -14,5 +17,6 @@ messages:
   cannot-save-default-names: '&4Cannot create &6names.yml'
   cannot-save-default-config: '&4Cannot create &6config.yml'
   names-reloaded: '&Bnames.yml &7has been reloaded.'
+  this-is-now: '&7Item name has been set to: '
   no-vault: '&4Disabled due to no &6[Vault]&4 dependency found!'
   no-permission: '&CYou lack permission for this.'

@@ -65,8 +65,6 @@ public class WhatIsIt extends JavaPlugin {
 
         setupPermissions();
 
-		showDataValues = config.getBoolean("config.display-data-values");
-
 		console.sendMessage(chatPrep(config.getString("messages.has-been-enabled")));
 	}
 	public void onDisable() { 
@@ -207,6 +205,7 @@ public class WhatIsIt extends JavaPlugin {
 				log.severe(chatPrep(config.getString("messages.cannot-save-default-names")));
 			}
 	    }
+		showDataValues = config.getBoolean("config.display-data-values");
     }
     private static void saveNamesConfig() {
     	try {

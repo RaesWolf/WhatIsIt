@@ -11,9 +11,11 @@ import java.util.logging.Logger;
 import net.milkbowl.vault.permission.Permission;
 
 import org.apache.commons.lang.StringUtils;
+import org.bukkit.ChatColor;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.enchantments.Enchantment;
@@ -40,12 +42,16 @@ public class WhatIsIt extends JavaPlugin {
 	private static File namesConfigFile = null;
 	private static InputStream defNamesConfigStream;
 	private static FileConfiguration namesConfig = null;
+	private static YamlConfiguration defConfig = null;
+	private static YamlConfiguration defNamesConfig = null;
 
 	private static File dataFolder;
 	private static Permission perms = null;
+	private static ConsoleCommandSender console;
 	
 
 	public void onEnable() {
+		console = getServer().getConsoleSender();
 		getDescription().getName();
 		dataFolder = getDataFolder();
 		defConfigStream = getResource("config.yml");
@@ -53,7 +59,7 @@ public class WhatIsIt extends JavaPlugin {
 		loadConfig();
 
 		if (getServer().getPluginManager().getPlugin("Vault") == null) {
-			log.info(chatPrep(config.getString("messages.no-vault")));
+			console.sendMessage(chatPrep(config.getString("messages.no-vault")));
 			getServer().getPluginManager().disablePlugin(this);
 		}
 
@@ -61,10 +67,10 @@ public class WhatIsIt extends JavaPlugin {
 
 		showDataValues = namesConfig.getBoolean("config.display-data-values");
 
-		log.info(chatPrep(config.getString("messages.has-been-enabled")));
+		console.sendMessage(chatPrep(config.getString("messages.has-been-enabled")));
 	}
 	public void onDisable() { 
-		log.info(chatPrep(config.getString("messages.has-been-disabled")));
+		console.sendMessage(chatPrep(config.getString("messages.has-been-disabled")));
 	}
 	
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -72,7 +78,7 @@ public class WhatIsIt extends JavaPlugin {
     	if (sender instanceof Player) {
     		player = (Player) sender;
     	} else {
-			sender.sendMessage(chatPrep(namesConfig.getString("messages.console-error")));
+    		console.sendMessage(chatPrep(config.getString("messages.console-error")));
 			return true;
     	}
     	String newName = null;
@@ -127,7 +133,8 @@ public class WhatIsIt extends JavaPlugin {
     }
     private static String chatPrep(String message) {
     	message = config.getString("messages.prefix") + message;
-    	return message.replaceAll("&([0-9a-fA-F])", "§$1");
+    	message = ChatColor.translateAlternateColorCodes('&', message);//message.replaceAll("&([0-9a-fA-F])", "§$1");
+    	return message;
     }
     private static Object getTarget(Player entity) {
     	int range = 100;
@@ -155,22 +162,26 @@ public class WhatIsIt extends JavaPlugin {
     	}
     }
     private static void loadConfig() {
-		YamlConfiguration defConfig = null;
-	    if (configFile == null) {
+		if (configFile == null) {
 	    	configFile = new File(dataFolder, "config.yml");
 	    }
 	    config = YamlConfiguration.loadConfiguration(configFile);
 	 
 	    // Look for defaults in the jar
+	    if (defConfig != null) {
+	    	config.setDefaults(defConfig);
+	        defConfigStream = null;
+	    }
 	    if (defConfigStream != null) {
 	        defConfig = YamlConfiguration.loadConfiguration(defConfigStream);
 	        config.setDefaults(defConfig);
+	        defConfigStream = null;
 	    }
 	    if (!configFile.exists() && defConfig != null) {
 	    	try {
 	    		defConfig.save(configFile);
 			} catch(IOException ex) {
-				log.severe(config.getString("messages.prefix") + config.getString("messages.cannot-save-default-config"));
+				log.severe(chatPrep(config.getString("messages.cannot-save-default-config")));
 			}
 	    }
 	    if (namesConfigFile == null) {
@@ -179,15 +190,20 @@ public class WhatIsIt extends JavaPlugin {
 	    namesConfig = YamlConfiguration.loadConfiguration(namesConfigFile);
 	 
 	    // Look for defaults in the jar
+	    if (defNamesConfig != null) {
+	        namesConfig.setDefaults(defNamesConfig);
+	        defNamesConfigStream = null;
+	    }
 	    if (defNamesConfigStream != null) {
-	        defConfig = YamlConfiguration.loadConfiguration(defNamesConfigStream);
-	        namesConfig.setDefaults(defConfig);
+	        defNamesConfig = YamlConfiguration.loadConfiguration(defNamesConfigStream);
+	        namesConfig.setDefaults(defNamesConfig);
+	        defNamesConfigStream = null;
 	    }
 	    if (!namesConfigFile.exists() && defConfig != null) {
 	    	try {
 	    		defConfig.save(namesConfigFile);
 			} catch(IOException ex) {
-				log.severe(config.getString("messages.prefix") + config.getString("messages.cannot-save-default-names"));
+				log.severe(chatPrep(config.getString("messages.cannot-save-default-names")));
 			}
 	    }
     }
@@ -195,7 +211,7 @@ public class WhatIsIt extends JavaPlugin {
     	try {
     		namesConfig.save(namesConfigFile);
 		} catch(IOException ex) {
-			log.severe(config.getString("messages.prefix") + config.getString("messages.cannot-save-names"));
+			log.severe(chatPrep(config.getString("messages.cannot-save-names")));
 		}
     }
 
@@ -239,7 +255,7 @@ public class WhatIsIt extends JavaPlugin {
 			return namesConfig.getString("enchantments.UNKNOWN");
 		}
 		return enchantmentName(enchantment) + 
-			config.getString("messages.enchantment_level") + 
+			config.getString("messages.enchantment-level") + 
 			enchantmentLevelName(level);
 	}
 	public static String enchantmentName(Enchantment enchantment) {

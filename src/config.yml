@@ -1,0 +1,18 @@
+config:
+  display-data-values: true
+messages:
+  prefix: '&F[&AWhat&7Is&CIt&F] '
+  enchantment-level: '&7 Lvl. &B'
+  enchanted: '&7  Enchanted with: &D'
+  that-is: '&7You are looking at: &B'
+  this-is: '&7You are holding: &B'
+  console-error: '&AWhat&7Is&CIt&F?&7 Console can not tell.'
+  has-been-enabled: '&7has been enabled.'
+  has-been-disabled: '&7has been disabled.'
+  unknown-object: Unknown
+  cannot-save-names: '&4Cannot save &6names.yml'
+  cannot-save-default-names: '&4Cannot create &6names.yml'
+  cannot-save-default-config: '&4Cannot create &6config.yml'
+  names-reloaded: '&Bnames.yml &7has been reloaded.'
+  no-vault: '&4Disabled due to no &6[Vault]&4 dependency found!'
+  no-permission: '&CYou lack permission for this.'

@@ -58,12 +58,9 @@ public class WhatIsIt extends JavaPlugin {
 		defNamesConfigStream = getResource("names.yml");
 		loadConfig();
 
-		if (getServer().getPluginManager().getPlugin("Vault") == null) {
-			console.sendMessage(chatPrep(config.getString("messages.no-vault")));
-			getServer().getPluginManager().disablePlugin(this);
+		if (getServer().getPluginManager().getPlugin("Vault") != null) {
+	        setupPermissions();
 		}
-
-        setupPermissions();
 
 		console.sendMessage(chatPrep(config.getString("messages.has-been-enabled")));
 	}
@@ -86,7 +83,7 @@ public class WhatIsIt extends JavaPlugin {
     		cmd.getName().equalsIgnoreCase("wis") ||
         	cmd.getName().equalsIgnoreCase("wit")
     	) {
-    		if(perms.has(player, "whatisit.admin")) {
+    		if(hasPermission(player, "whatisit.admin")) {
 	    		if (args.length > 0) {
 	    			if (args[0].equalsIgnoreCase("itis")) {
 	    				String[] tmpArgs = (String[]) Array.newInstance(String.class, args.length - 1);
@@ -103,7 +100,7 @@ public class WhatIsIt extends JavaPlugin {
     		}
     	}
     	if (cmd.getName().equalsIgnoreCase("wis")) {
-    		if(!perms.has(player, "whatisit.use")) {
+    		if(!hasPermission(player, "whatisit.use")) {
     			player.sendMessage(chatPrep(config.getString("messages.no-permission")));
     			return false;
     		}
@@ -116,7 +113,7 @@ public class WhatIsIt extends JavaPlugin {
     		return true;
     		
     	} else if (cmd.getName().equalsIgnoreCase("wit")) {
-    		if(!perms.has(player, "whatisit.use")) {
+    		if(!hasPermission(player, "whatisit.use")) {
     			player.sendMessage(chatPrep(config.getString("messages.no-permission")));
     			return false;
     		}
@@ -130,6 +127,19 @@ public class WhatIsIt extends JavaPlugin {
     	}
     	return false;
     }
+    
+    // Uses Vault if available, otherwise uses superPerms 
+    private boolean hasPermission(Player player, String permission) {
+    	if (player == null) {
+    		return false;
+    	}
+    	if (perms == null) {
+    		return player.hasPermission(permission);
+    	} else {
+    		return perms.has(player, permission);
+    	}
+    }
+    
     private static String chatPrep(String message) {
     	message = config.getString("messages.prefix") + message;
     	message = ChatColor.translateAlternateColorCodes('&', message);//message.replaceAll("&([0-9a-fA-F])", "§$1");

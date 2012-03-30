@@ -1,9 +1,9 @@
 name: WhatIsIt
-version: 1.b.1
+version: 1.b.2
 description: Gets names of stuff.
 author: flobi
 website: http://dev.bukkit.org/server-mods/whatisit/
-depend: [Vault]
+softdepend: [Vault]
 
 main: com.flobi.WhatIsIt.WhatIsIt
 database: false

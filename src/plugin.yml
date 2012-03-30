@@ -1,8 +1,8 @@
 name: WhatIsIt
-version: 1.b.0
+version: 1.b.1
 description: Gets names of stuff.
 author: flobi
-website: http://www.hollowmatrix.com/
+website: http://dev.bukkit.org/server-mods/whatisit/
 depend: [Vault]
 
 main: com.flobi.WhatIsIt.WhatIsIt
@@ -35,11 +35,11 @@ permissions:
       whatisit.admin: true
   whatisit.this:
     description: What Is thiS
-    default: false
+    default: op
   whatisit.that:
     description: What Is thaT
-    default: false
+    default: op
   whatisit.admin:
     description: WhatIsIt Admin
-    default: false
+    default: op
     

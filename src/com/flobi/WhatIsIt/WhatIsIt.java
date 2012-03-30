@@ -198,9 +198,9 @@ public class WhatIsIt extends JavaPlugin {
 	        namesConfig.setDefaults(defNamesConfig);
 	        defNamesConfigStream = null;
 	    }
-	    if (!namesConfigFile.exists() && defConfig != null) {
+	    if (!namesConfigFile.exists() && defNamesConfig != null) {
 	    	try {
-	    		defConfig.save(namesConfigFile);
+	    		defNamesConfig.save(namesConfigFile);
 			} catch(IOException ex) {
 				log.severe(chatPrep(config.getString("messages.cannot-save-default-names")));
 			}
@@ -398,7 +398,9 @@ public class WhatIsIt extends JavaPlugin {
 		String data = "";
 		String name = "";
 		typeId = Integer.toString(item.getTypeId());
-		if (item.getDurability() > 0) {
+		if (item.getType().getMaxDurability() > 0) {
+			data = "0";
+		} else if (item.getDurability() > 0) {
 			data = Short.toString(item.getDurability());
 		} else if (item.getData().getData() > 0) {
 			data = Byte.toString(item.getData().getData());

@@ -63,7 +63,6 @@ public class WhatIsIt extends JavaPlugin {
 	 */
 	public void onEnable() {
 		console = getServer().getConsoleSender();
-		getDescription().getName();
 		dataFolder = getDataFolder();
 		defConfigStream = getResource("config.yml");
 		defNamesConfigStream = getResource("names.yml");

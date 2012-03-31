@@ -303,7 +303,7 @@ public class WhatIsIt extends JavaPlugin {
 	/**
 	 * Retrieves the name of Enchantment.
 	 * 
-	 * @param Entry<Enchantment, Integer> enchantment to identify
+	 * @param Entry&lt;Enchantment,&nbsp;Integer> enchantment to identify
 	 * @return String name of enchantment
 	 */
 	public static String enchantmentName(Entry<Enchantment, Integer> enchantment) {
@@ -312,7 +312,7 @@ public class WhatIsIt extends JavaPlugin {
 	/**
 	 * Retrieves the name of Enchantment.
 	 * 
-	 * @param Entry<Enchantment, Integer> enchantment to identify
+	 * @param Entry&lt;Enchantment,&nbsp;Integer> enchantment to identify
 	 * @param Boolean show data values
 	 * @return String name of enchantment
 	 */
@@ -322,7 +322,7 @@ public class WhatIsIt extends JavaPlugin {
 	/**
 	 * Retrieves the name of Enchantment.
 	 * 
-	 * @param Entry<Enchantment, Integer> enchantment to identify
+	 * @param Entry&lt;Enchantment,&nbsp;Integer> enchantment to identify
 	 * @param Boolean show data values
 	 * @param String new name
 	 * @return String name of enchantment

@@ -32,6 +32,14 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 
+/**
+ * 
+ * WhatIsIt
+ * Friendly names plugin for Bukkit
+ * 
+ * @author Joshua "Flobi" Hatfield
+ */
+
 public class WhatIsIt extends JavaPlugin {
 	private static final Logger log = Logger.getLogger("Minecraft");
 
@@ -50,6 +58,9 @@ public class WhatIsIt extends JavaPlugin {
 	private static ConsoleCommandSender console;
 	
 
+	/**
+	 * Event executed when enabled.
+	 */
 	public void onEnable() {
 		console = getServer().getConsoleSender();
 		getDescription().getName();
@@ -64,10 +75,23 @@ public class WhatIsIt extends JavaPlugin {
 
 		console.sendMessage(chatPrep(config.getString("messages.has-been-enabled")));
 	}
+	/**
+	 * Event executed when disabled.
+	 */
 	public void onDisable() { 
 		console.sendMessage(chatPrep(config.getString("messages.has-been-disabled")));
 	}
 	
+	/**
+	 * Event executed when commands are entered.
+	 * 
+	 * @param CommandSender sender
+	 * @param Command command being sent
+	 * @param String command label
+	 * @param String[] command arguments
+	 * 
+	 * @return boolean success of command
+	 */
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
     	Player player = null;
     	String iATR = "XXXITEMXAMPERSANDXTEMPRARYXREPLACEMENTXXX";
@@ -128,7 +152,13 @@ public class WhatIsIt extends JavaPlugin {
     	return false;
     }
     
-    // Uses Vault if available, otherwise uses superPerms 
+	/**
+	 * Permissions wrapper, uses Vault if available, otherwise superPerms.
+	 * 
+	 * @param Player player to check
+	 * @param String permission level
+	 * @return boolean has permission
+	 */
     private boolean hasPermission(Player player, String permission) {
     	if (player == null) {
     		return false;
@@ -140,11 +170,24 @@ public class WhatIsIt extends JavaPlugin {
     	}
     }
     
+	/**
+	 * Prepares chat, prepending prefix and processing colors.
+	 * 
+	 * @param String message to prepare
+	 * @return String prepared message
+	 */
     private static String chatPrep(String message) {
     	message = config.getString("messages.prefix") + message;
     	message = ChatColor.translateAlternateColorCodes('&', message);//message.replaceAll("&([0-9a-fA-F])", "§$1");
     	return message;
     }
+
+	/**
+	 * Attempts to retrieve targeted entity or object.
+	 * 
+	 * @param Player player whose sight to check for target
+	 * @return Object target entity or block
+	 */
     private static Object getTarget(Player entity) {
     	int range = 100;
     	Iterable<Entity> entities = entity.getNearbyEntities(range, range, range);
@@ -170,6 +213,10 @@ public class WhatIsIt extends JavaPlugin {
         	}
     	}
     }
+
+    /**
+	 * Loads config.yml and names.yml configuration files.
+	 */
     private static void loadConfig() {
 		if (configFile == null) {
 	    	configFile = new File(dataFolder, "config.yml");
@@ -217,6 +264,10 @@ public class WhatIsIt extends JavaPlugin {
 	    }
 		showDataValues = config.getBoolean("config.display-data-values");
     }
+
+	/**
+	 * Saves names.yml configuration file
+	 */
     private static void saveNamesConfig() {
     	try {
     		namesConfig.save(namesConfigFile);
@@ -225,6 +276,14 @@ public class WhatIsIt extends JavaPlugin {
 		}
     }
 
+	/**
+	 * Retrieves the name of Object.
+	 * 
+	 * @param Object what to identify
+	 * @param Boolean show data values
+	 * @param String new name
+	 * @return String name of object
+	 */
     private static String name(Object whatToIdentify, Boolean showData, String newName) {
 		if (whatToIdentify instanceof Entity) {
 			return entityName((Entity) whatToIdentify, showData, newName);
@@ -241,25 +300,69 @@ public class WhatIsIt extends JavaPlugin {
 		return config.getString("messages.unknown-object");
 	}
 	
-	// ----- ENCHANTMENT NAMES -----
+	/**
+	 * Retrieves the name of Enchantment.
+	 * 
+	 * @param Entry<Enchantment, Integer> enchantment to identify
+	 * @return String name of enchantment
+	 */
 	public static String enchantmentName(Entry<Enchantment, Integer> enchantment) {
 		return enchantmentName(enchantment, false);
 	}
+	/**
+	 * Retrieves the name of Enchantment.
+	 * 
+	 * @param Entry<Enchantment, Integer> enchantment to identify
+	 * @param Boolean show data values
+	 * @return String name of enchantment
+	 */
 	public static String enchantmentName(Entry<Enchantment, Integer> enchantment, Boolean showData) {
 		return enchantmentName(enchantment, showData, null);
 	}
+	/**
+	 * Retrieves the name of Enchantment.
+	 * 
+	 * @param Entry<Enchantment, Integer> enchantment to identify
+	 * @param Boolean show data values
+	 * @param String new name
+	 * @return String name of enchantment
+	 */
 	private static String enchantmentName(Entry<Enchantment, Integer> enchantment, Boolean showData, String newName) {
 		if (enchantment == null) {
 			return namesConfig.getString("enchantments.UNKNOWN");
 		}
 		return enchantmentName(enchantment.getKey(), enchantment.getValue());
 	}
+	/**
+	 * Retrieves the name of Enchantment.
+	 *
+	 * @param Enchantment enchantment to identify
+	 * @param Integer level of enchantment
+	 * @return String name of enchantment
+	 */
 	public static String enchantmentName(Enchantment enchantment, Integer level) {
 		return enchantmentName(enchantment, level, false);
 	}
+	/**
+	 * Retrieves the name of Enchantment.
+	 * 
+	 * @param Enchantment enchantment to identify
+	 * @param Integer level of enchantment
+	 * @param Boolean show data values
+	 * @return String name of enchantment
+	 */
 	public static String enchantmentName(Enchantment enchantment, Integer level, Boolean showData) {
 		return enchantmentName(enchantment, level, showData, null);
 	}
+	/**
+	 * Retrieves the name of Enchantment.
+	 * 
+	 * @param Enchantment enchantment to identify
+	 * @param Integer level of enchantment
+	 * @param Boolean show data values
+	 * @param String new name
+	 * @return String name of enchantment
+	 */
 	private static String enchantmentName(Enchantment enchantment, Integer level, Boolean showData, String newName) {
 		if (enchantment == null) {
 			return namesConfig.getString("enchantments.UNKNOWN");
@@ -268,12 +371,33 @@ public class WhatIsIt extends JavaPlugin {
 			config.getString("messages.enchantment-level") + 
 			enchantmentLevelName(level);
 	}
+	/**
+	 * Retrieves the name of Enchantment.
+	 * 
+	 * @param Enchantment enchantment to identify
+	 * @return String name of enchantment
+	 */
 	public static String enchantmentName(Enchantment enchantment) {
 		return enchantmentName(enchantment, false);
 	}
+	/**
+	 * Retrieves the name of Enchantment.
+	 * 
+	 * @param Enchantment enchantment to identify
+	 * @param Boolean show data values
+	 * @return String name of enchantment
+	 */
 	public static String enchantmentName(Enchantment enchantment, Boolean showData) {
 		return enchantmentName(enchantment, showData, null);
 	}
+	/**
+	 * Retrieves the name of Enchantment.
+	 * 
+	 * @param Enchantment enchantment to identify
+	 * @param Boolean show data values
+	 * @param String new name
+	 * @return String name of enchantment
+	 */
 	private static String enchantmentName(Enchantment enchantment, Boolean showData, String newName) {
 		if (enchantment == null) {
 			return namesConfig.getString("enchantments.UNKNOWN");
@@ -295,6 +419,12 @@ public class WhatIsIt extends JavaPlugin {
 		}
 		return name;
 	}
+	/**
+	 * Retrieves the name of Enchantment level.
+	 * 
+	 * @param Integer enchantment level to identify
+	 * @return String name of enchantment level
+	 */
 	public static String enchantmentLevelName(Integer level) {
 		String name = namesConfig.getString("enchantmentlevels." + Integer.toString(level));
 		if (name == null) {
@@ -303,13 +433,33 @@ public class WhatIsIt extends JavaPlugin {
 		return name;
 	}
 	
-	// ----- BLOCK NAMES -----
+	/**
+	 * Retrieves the name of Block.
+	 * 
+	 * @param Block block to identify
+	 * @return String name of block
+	 */
 	public static String blockName(Block block) {
 		return blockName(block, false);
 	}
+	/**
+	 * Retrieves the name of Block.
+	 * 
+	 * @param Block block to identify
+	 * @param Boolean show data values
+	 * @return String name of block
+	 */
 	public static String blockName(Block block, Boolean showData) {
 		return blockName(block, showData, null);
 	}
+	/**
+	 * Retrieves the name of Block.
+	 * 
+	 * @param Block block to identify
+	 * @param Boolean show data values
+	 * @param String new name
+	 * @return String name of block
+	 */
 	private static String blockName(Block block, Boolean showData, String newName) {
 		if (block == null) {
 			return namesConfig.getString("items.UNKNOWN");
@@ -318,7 +468,12 @@ public class WhatIsIt extends JavaPlugin {
 		return itemName(item, showData, newName);
 	}
 	
-	// ----- PLAYER NAMES -----
+	/**
+	 * Retrieves the name of Player.
+	 * 
+	 * @param Player player to identify
+	 * @return String name of player
+	 */
 	private static String playerName(Player player) {
 		if (player == null) {
 			return namesConfig.getString("entities.UNKNOWN");
@@ -326,13 +481,32 @@ public class WhatIsIt extends JavaPlugin {
 		return player.getName();
 	}
 	
-	// ----- ENTITY NAMES -----
+	/**
+	 * Retrieves the name of Entity.
+	 * 
+	 * @param Entity entity to identify
+	 * @return String name of entity
+	 */
 	public static String entityName(Entity entity) {
 		return entityName(entity, false);
 	}
+	/**
+	 * Retrieves the name of Entity.
+	 * @param Entity entity to identify
+	 * @param Boolean show data values
+	 * @return String name of entity
+	 */
 	public static String entityName(Entity entity, Boolean showData) {
 		return entityName(entity, showData, null);
 	}
+	/**
+	 * Retrieves the name of Entity.
+	 * 
+	 * @param Entity entity to identify
+	 * @param Boolean show data values
+	 * @param String new name
+	 * @return String name of entity
+	 */
 	private static String entityName(Entity entity, Boolean showData, String newName) {
 		if (entity == null) {
 			return namesConfig.getString("entities.UNKNOWN");
@@ -393,13 +567,33 @@ public class WhatIsIt extends JavaPlugin {
 		return owner_prefix + name;
 	}
 	
-	// ----- ITEM NAMES -----
+	/**
+	 * Retrieves the name of Item.
+	 * 
+	 * @param ItemStack item to identify
+	 * @return String name of item
+	 */
 	public static String itemName(ItemStack item) {
 		return itemName(item, false);
 	}
+	/**
+	 * Retrieves the name of Item.
+	 * 
+	 * @param ItemStack item to identify
+	 * @param Boolean show data values
+	 * @return String name of item
+	 */
 	public static String itemName(ItemStack item, Boolean showData) {
 		return itemName(item, showData, null);
 	}
+	/**
+	 * Retrieves the name of Item.
+	 * 
+	 * @param ItemStack item to identify
+	 * @param Boolean show data values
+	 * @param String new name
+	 * @return String name of item
+	 */
 	private static String itemName(ItemStack item, Boolean showData, String newName) {
 		if (item == null) {
 			return namesConfig.getString("items.UNKNOWN");
@@ -435,6 +629,11 @@ public class WhatIsIt extends JavaPlugin {
 		}
 		return name;
 	}
+	/**
+	 * Registers Vault permissions to local object.
+	 * 
+	 * @return boolean is Vault perms enabled
+	 */
     private boolean setupPermissions() {
         RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
         perms = rsp.getProvider();

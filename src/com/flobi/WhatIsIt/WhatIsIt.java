@@ -72,6 +72,13 @@ public class WhatIsIt extends JavaPlugin {
 	        setupPermissions();
 		}
 
+        // Load up the Plugin metrics
+        try {
+            MetricsLite metrics = new MetricsLite(this);
+            metrics.start();
+        } catch (IOException e) {
+            // Failed to submit the stats :-(
+        }
 		console.sendMessage(chatPrep(config.getString("messages.has-been-enabled")));
 	}
 	/**

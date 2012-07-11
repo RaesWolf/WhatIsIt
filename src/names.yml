@@ -159,6 +159,31 @@ items:
   '50;0': Torch
   '51;0': Fire
   '52;0': Monster Spawner
+  '52;50': Creeper Spawner
+  '52;51': Skeleton Spawner
+  '52;52': Spider Spawner
+  '52;53': Giant Spawner
+  '52;54': Zombie Spawner
+  '52;55': Slime Spawner
+  '52;56': Ghast Spawner
+  '52;57': Zombie Pigman Spawner
+  '52;58': Enderman Spawner
+  '52;59': Cave Spider Spawner
+  '52;60': Silverfish Spawner
+  '52;61': Blaze Spawner
+  '52;62': Magma Cube Spawner
+  '52;63': Ender Dragon Spawner
+  '52;90': Pig Spawner
+  '52;91': Sheep Spawner
+  '52;92': Cow Spawner
+  '52;93': Chicken Spawner
+  '52;94': Squid Spawner
+  '52;95': Wolf Spawner
+  '52;96': Mooshroom Spawner
+  '52;97': Snow Golem Spawner
+  '52;98': Ocelot Spawner
+  '52;99': Iron Golem Spawner
+  '52;120': Villager Spawner
   '53;0': Wooden Stairs
   '54;0': Chest
   '55;0': Redstone Wire

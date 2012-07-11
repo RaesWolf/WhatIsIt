@@ -13,6 +13,7 @@ import net.milkbowl.vault.permission.Permission;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.block.Block;
+import org.bukkit.block.CreatureSpawner;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -470,7 +471,16 @@ public class WhatIsIt extends JavaPlugin {
 		if (block == null) {
 			return namesConfig.getString("items.UNKNOWN");
 		}
-		ItemStack item = new ItemStack(block.getType(), 1, (short) 0, block.getData());
+		
+		byte blockData = block.getData();
+		if (block.getTypeId() == 52) {
+			// Monster Spawner, get type for data to pass to itemName:
+			CreatureSpawner spawner = (CreatureSpawner) block.getState();
+			blockData = (byte) spawner.getSpawnedType().getTypeId();
+		} else {
+			
+		}
+		ItemStack item = new ItemStack(block.getType(), 1, (short) 0, blockData);
 		return itemName(item, showData, newName);
 	}
 	

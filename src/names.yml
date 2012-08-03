@@ -184,7 +184,7 @@ items:
   '52;98': Ocelot Spawner
   '52;99': Iron Golem Spawner
   '52;120': Villager Spawner
-  '53;0': Wooden Stairs
+  '53;0': Oak Plank Stairs
   '54;0': Chest
   '55;0': Redstone Wire
   '56;0': Diamond Ore
@@ -261,6 +261,24 @@ items:
   '122;0': Dragon Egg
   '123;0': Redstone Lamp (off)
   '124;0': Redstone Lamp (on)
+  '125;0': Oak Plank Double Slab
+  '125;1': Pine Plank Double Slab
+  '125;2': Birch Plank Double Slab
+  '125;3': Jungle Plank Double Slab
+  '126;0': Oak Plank Slab
+  '126;1': Pine Plank Slab
+  '126;2': Birch Plank Slab
+  '126;3': Jungle Plank Slab
+  '127;0': Cocoa Plant
+  '128;0': Sandstone Stairs
+  '129;0': Emerald Ore
+  '130;0': Ender Chest
+  '131;0': Tripwire Hook
+  '132;0': Tripwire
+  '133;0': Block of Emerald
+  '134;0': Pine Plank Stairs
+  '135;0': Birch Plank Stairs
+  '136;0': Jungle Plank Stairs
   '256;0': Iron Shovel
   '257;0': Iron Pickaxe
   '258;0': Iron Axe
@@ -329,6 +347,7 @@ items:
   '320;0': Cooked Porkchop
   '321;0': Painting
   '322;0': Golden Apple
+  '322;1': Super Golden Apple
   '323;0': Sign
   '324;0': Wooden Door
   '325;0': Empty Bucket
@@ -486,6 +505,9 @@ items:
   '383;120': Villager Spawn Egg
   '384;0': Bottle o' Enchanting
   '385;0': Fire Charge
+  '386;0': Book and Quill
+  '387;0': Written Book
+  '388;0': Emerald
   '2256;0': 13 Disc (yellow)
   '2257;0': Cat Disc (green)
   '2258;0': Blocks Disc (orange)

@@ -1,6 +1,11 @@
 # entity number 1, dropped item, is converted to item table below.
 # entity number 16, splash potion, is converted to item table below.
 # entity number 21, falling block, is converted to item table below.
+# item number 373, potion is a bit dynamic.
+potion-parts:
+  absolute-zero: Water Bottle
+  prefix-bit-14: 'Splash '
+  suffix-bit-6: ' (Ext)'
 entities:
   'UNKNOWN': Unknown
   '2;0': Experience Orb
@@ -413,65 +418,70 @@ items:
   '370;0': Ghast Tear
   '371;0': Gold Nugget
   '372;0': Nether Wart
-  '373;0': Water Bottle
+  '373;0': Mundane Potion
+  '373;1': Potion of Regeneration
+  '373;2': Potion of Swiftness
+  '373;3': Potion of Fire Resistance
+  '373;4': Potion of Poison
+  '373;5': Potion of Healing
+  '373;6': Clear Potion
+  '373;7': Clear Potion
+  '373;8': Potion of Weakness
+  '373;9': Potion of Strength
+  '373;10': Potion of Slowness
+  '373;11': Diffuse Potion
+  '373;12': Potion of Harming
+  '373;13': Artless Potion
+  '373;14': Thin Potion
+  '373;15': Thin Potion
   '373;16': Awkward Potion
+  '373;17': Potion of Regeneration
+  '373;18': Potion of Swiftness
+  '373;19': Potion of Fire Resistance
+  '373;20': Potion of Poison
+  '373;21': Potion of Healing
+  '373;22': Bungling Potion
+  '373;23': Bungling Potion
+  '373;24': Potion of Weakness
+  '373;25': Potion of Strength
+  '373;26': Potion of Slowness
+  '373;27': Smooth Potion
+  '373;28': Potion of Harming
+  '373;29': Suave Potion
+  '373;30': Debonair Potion
+  '373;31': Debonair Potion
   '373;32': Thick Potion
-  '373;64': Mundane Potion (extended)
-  '373;8192': Mundane Potion
-  '373;8193': Potion of Regeneration
-  '373;8257': Potion of Regeneration (extended)
-  '373;8225': Potion of Regeneration II
-  '373;8289': Potion of Regeneration II (extended)
-  '373;8194': Potion of Swiftness
-  '373;8258': Potion of Swiftness (extended)
-  '373;8226': Potion of Swiftness II
-  '373;8290': Potion of Swiftness II (extended)
-  '373;8195': Potion of Fire Resistance
-  '373;8259': Potion of Fire Resistance (extended)
-  '373;8227': Potion of Fire Resistance (reverted) 
-  '373;8197': Potion of Healing
-  '373;8261': Potion of Healing (reverted)
-  '373;8229': Potion of Healing II
-  '373;8201': Potion of Strength
-  '373;8265': Potion of Strength (extended)
-  '373;8233': Potion of Strength II
-  '373;8297': Potion of Strength II (extended)
-  '373;8196': Potion of Poison
-  '373;8260': Potion of Poison (extended)
-  '373;8228': Potion of Poison II
-  '373;8292': Potion of Poison II (extended)
-  '373;8200': Potion of Weakness
-  '373;8264': Potion of Weakness (extended)
-  '373;8232': Potion of Weakness (reverted)
-  '373;8202': Potion of Slowness
-  '373;8266': Potion of Slowness (extended)
-  '373;8234': Potion of Slowness (reverted)
-  '373;8204': Potion of Harming
-  '373;8268': Potion of Harming (reverted)
-  '373;8236': Potion of Harming II
-  '373;16384': Splash Mundane Potion
-  '373;16385': Splash Potion of Regeneration
-  '373;16449': Splash Potion of Regeneration (extended)
-  '373;16417': Splash Potion of Regeneration II
-  '373;16386': Splash Potion of Swiftness
-  '373;16450': Splash Potion of Swiftness (extended)
-  '373;16418': Splash Potion of Swiftness II
-  '373;16387': Splash Potion of Fire Resistance
-  '373;16451': Splash Potion of Fire Resistance (extended)
-  '373;16389': Splash Potion of Healing
-  '373;16421': Splash Potion of Healing II
-  '373;16393': Splash Potion of Strength
-  '373;16457': Splash Potion of Strength (extended)
-  '373;16425': Splash Potion of Strength II
-  '373;16388': Splash Potion of Poison
-  '373;16452': Splash Potion of Poison (extended)
-  '373;16420': Splash Potion of Poison II
-  '373;16392': Splash Potion of Weakness
-  '373;16456': Splash Potion of Poison (extended)
-  '373;16394': Splash Potion of Slowness
-  '373;16458': Splash Potion of Slowness (extended)
-  '373;16396': Splash Potion of Harming
-  '373;16428': Splash Potion of Harming II
+  '373;33': Potion of Regeneration II
+  '373;34': Potion of Swiftness II
+  '373;35': Potion of Fire Resistance
+  '373;36': Potion of Poison II
+  '373;37': Potion of Healing II
+  '373;38': Charming Potion
+  '373;39': Charming Potion
+  '373;40': Potion of Weakness
+  '373;41': Potion of Strength II
+  '373;42': Potion of Slowness
+  '373;43': Refined Potion
+  '373;44': Potion of Harming II
+  '373;45': Cordial Potion
+  '373;46': Sparkling Potion
+  '373;47': Sparkling Potion
+  '373;48': Potent Potion
+  '373;49': Potion of Regeneration II
+  '373;50': Potion of Swiftness II
+  '373;51': Potion of Fire Resistance
+  '373;52': Potion of Poison II
+  '373;53': Potion of Healing II
+  '373;54': Rank Potion
+  '373;55': Rank Potion
+  '373;56': Potion of Weakness
+  '373;57': Potion of Strength II
+  '373;58': Potion of Slowness
+  '373;59': Acrid Potion
+  '373;60': Potion of Harming II
+  '373;61': Gross Potion
+  '373;62': Stinky Potion
+  '373;63': Stinky Potion
   '374;0': Glass Bottle
   '375;0': Spider Eye
   '376;0': Fermented Spider Eye

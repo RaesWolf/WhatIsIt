@@ -616,7 +616,9 @@ public class WhatIsIt extends JavaPlugin {
 		}
 		String typeId = "";
 		String data = "";
-		String name = "";
+		String name = null;
+		String prefix = "";
+		String suffix = "";
 		typeId = Integer.toString(item.getTypeId());
 		if (item.getType().getMaxDurability() > 0) {
 			data = "0";
@@ -628,20 +630,44 @@ public class WhatIsIt extends JavaPlugin {
 			data = "0";
 		}
 		
+		if (typeId.equals("373")) {
+			// Data on potions is a bit more complicated...
+			short potionData = Short.parseShort(data);
+			if (potionData == 0) {
+				name = namesConfig.getString("potion-parts.absolute-zero");
+			} else {
+				for (short bitPos = 14; bitPos > 5; bitPos--) {
+					
+					short bitPow = (short) Math.pow(2, bitPos);
+					if (potionData >= bitPow) {
+						potionData -= bitPow;
+						String tmpPrefix = namesConfig.getString("potion-parts.prefix-bit-" + bitPos);
+						if (tmpPrefix != null) prefix += tmpPrefix; 
+						String tmpSuffix = namesConfig.getString("potion-parts.suffix-bit-" + bitPos);
+						if (tmpSuffix != null) prefix += tmpSuffix; 
+					}
+				}
+				data = Short.toString(potionData);
+			}
+		}
+		
 		if (newName != null) {
 			namesConfig.set("items." + typeId + ";" + data, newName);
 			saveNamesConfig();
 		}
 		
-		name = namesConfig.getString("items." + typeId + ";" + data);
+		if (name == null) {
+			name = namesConfig.getString("items." + typeId + ";" + data);
+		}
 		if (name == null) {
 			name = namesConfig.getString("items." + typeId + ";0");
 		}
-		if (showData) {
-			name = "(" + typeId + ":" + data + ") " + name;
-		}
 		if (name == null) {
 			name = namesConfig.getString("items.UNKNOWN");
+		}
+		name = prefix + name + suffix;
+		if (showData) {
+			name = "(" + typeId + ":" + data + ") " + name;
 		}
 		return name;
 	}

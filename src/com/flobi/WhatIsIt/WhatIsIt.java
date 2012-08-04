@@ -644,7 +644,7 @@ public class WhatIsIt extends JavaPlugin {
 						String tmpPrefix = namesConfig.getString("potion-parts.prefix-bit-" + bitPos);
 						if (tmpPrefix != null) prefix += tmpPrefix; 
 						String tmpSuffix = namesConfig.getString("potion-parts.suffix-bit-" + bitPos);
-						if (tmpSuffix != null) prefix += tmpSuffix; 
+						if (tmpSuffix != null) suffix += tmpSuffix; 
 					}
 				}
 				data = Short.toString(potionData);

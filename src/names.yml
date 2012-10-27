@@ -9,13 +9,16 @@ potion-parts:
 entities:
   'UNKNOWN': Unknown
   '2;0': Experience Orb
-  '10;0': Arrow
-  '11;0': Snowball
+  '9;0': Painting
+  '10;0': Shot Arrow
+  '11;0': Thrown Snowball
   '12;0': Ghast Fireball
   '13;0': Blaze Fireball
-  '14;0': Ender Pearl
-  '15;0': Eye of Ender
-  '17;0': Bottle o' Enchanting
+  '14;0': Thrown Ender Pearl
+  '15;0': Thrown Eye of Ender
+  '17;0': Thrown Bottle o' Enchanting
+  '18;0': Item Frame
+  '19:0': Wither Skull
   '20;0': Primed TNT
   '40;0': Minecart
   '41;0': Boat
@@ -33,6 +36,9 @@ entities:
   '61;0': Blaze
   '62;0': Magma Cube
   '63;0': Ender Dragon
+  '64;0': Wither
+  '65:0': Bat
+  '66:0': Witch
   '90;0': Pig
   '91;0': White Sheep
   '91;1': Orange Sheep
@@ -284,6 +290,26 @@ items:
   '134;0': Pine Plank Stairs
   '135;0': Birch Plank Stairs
   '136;0': Jungle Plank Stairs
+  '137;0': Command Block
+  '138;0': Beacon
+  '139;0': Cobblestone Wall
+  '140;0': Empty Flower Pot
+  '140;1': Rose Flower Pot
+  '140;2': Dandelion Flower Pot
+  '140;3': Oak Sapling Flower Pot
+  '140;4': Spruce Sapling Flower Pot
+  '140;5': Birch Sapling Flower Pot
+  '140;6': Jungle Sapling Flower Pot
+  '140;7': Red Mushroom Flower Pot
+  '140;8': Brown Mushroom Flower Pot
+  '140;9': Cactus Flower Pot
+  '140;10': Dead Bush Flower Pot
+  '140;11': Fern Flower Pot
+  '141;0': Carrots
+  '142;0': Potatoes
+  '143;0': Wooden Button
+  '144;0': Head
+  '145;0': Anvil
   '256;0': Iron Shovel
   '257;0': Iron Pickaxe
   '258;0': Iron Axe
@@ -518,6 +544,22 @@ items:
   '386;0': Book and Quill
   '387;0': Written Book
   '388;0': Emerald
+  '389;0': Item Frame
+  '390;0': Flower Pot
+  '391;0': Carrot
+  '392;0': Potato
+  '393;0': Baked Potato
+  '394;0': Poisonous Potato
+  '395;0': Empty Map
+  '396;0': Golden Carrot
+  '397;0': Skeleton Head
+  '397;1': Wither Skeleton Head
+  '397;2': Zombie Head
+  '397;3': Human Head
+  '397;4': Creeper Head
+  '398;0': Carrot on a Stick
+  '399;0': Nether Star
+  '400;0': Pumpkin Pie
   '2256;0': 13 Disc (yellow)
   '2257;0': Cat Disc (green)
   '2258;0': Blocks Disc (orange)

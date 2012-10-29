@@ -2,6 +2,7 @@
 # entity number 16, splash potion, is converted to item table below.
 # entity number 21, falling block, is converted to item table below.
 # item number 373, potion is a bit dynamic.
+
 potion-parts:
   absolute-zero: Water Bottle
   prefix-bit-14: 'Splash '
@@ -293,7 +294,8 @@ items:
   '137;0': Command Block
   '138;0': Beacon
   '139;0': Cobblestone Wall
-  '140;0': Empty Flower Pot
+  '139;1': Mossy Cobblestone Wall
+  '140;0': Flower Pot
   '140;1': Rose Flower Pot
   '140;2': Dandelion Flower Pot
   '140;3': Oak Sapling Flower Pot
@@ -310,6 +312,17 @@ items:
   '143;0': Wooden Button
   '144;0': Head
   '145;0': Anvil
+  '145;1': Anvil
+  '145;2': Anvil
+  '145;3': Anvil
+  '145;4': Slightly Damaged Anvil
+  '145;5': Slightly Damaged Anvil
+  '145;6': Slightly Damaged Anvil
+  '145;7': Slightly Damaged Anvil
+  '145;8': Very Damaged Anvil
+  '145;9': Very Damaged Anvil
+  '145;10': Very Damaged Anvil
+  '145;11': Very Damaged Anvil
   '256;0': Iron Shovel
   '257;0': Iron Pickaxe
   '258;0': Iron Axe
@@ -429,7 +442,7 @@ items:
   '355;0': Bed
   '356;0': Redstone Repeater
   '357;0': Cookie
-  '358;0': Map
+  '358;0': 'Map #%d'
   '359;0': Shears
   '360;0': Melon Slice
   '361;0': Pumpkin Seeds
@@ -498,7 +511,7 @@ items:
   '373;51': Potion of Fire Resistance
   '373;52': Potion of Poison II
   '373;53': Potion of Healing II
-  '373;54': Rank Potion
+  '373;54': Potion of Night Vision
   '373;55': Rank Potion
   '373;56': Potion of Weakness
   '373;57': Potion of Strength II
@@ -506,7 +519,7 @@ items:
   '373;59': Acrid Potion
   '373;60': Potion of Harming II
   '373;61': Gross Potion
-  '373;62': Stinky Potion
+  '373;62': Potion of Invisibility
   '373;63': Stinky Potion
   '374;0': Glass Bottle
   '375;0': Spider Eye
@@ -530,6 +543,10 @@ items:
   '383;60': Silverfish Spawn Egg
   '383;61': Blaze Spawn Egg
   '383;62': Magma Cube Spawn Egg
+  '383;63': Ender Dragon Spawn Egg
+  '383;64': Wither Spawn Egg
+  '383;65': Bat Spawn Egg
+  '383;66': Witch Spawn Egg
   '383;90': Pig Spawn Egg
   '383;91': Sheep Spawn Egg
   '383;92': Cow Spawn Egg

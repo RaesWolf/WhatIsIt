@@ -669,6 +669,7 @@ public class WhatIsIt extends JavaPlugin {
 		if (showData) {
 			name = "(" + typeId + ":" + data + ") " + name;
 		}
+		name = name.replace("%d", data);
 		return name;
 	}
 	/**

@@ -53,6 +53,7 @@ public class WhatIsIt extends JavaPlugin {
 	private static FileConfiguration namesConfig = null;
 	private static YamlConfiguration defConfig = null;
 	private static YamlConfiguration defNamesConfig = null;
+	private static String version;
 
 	private static File dataFolder;
 	private static Permission perms = null;
@@ -63,6 +64,7 @@ public class WhatIsIt extends JavaPlugin {
 	 * Event executed when enabled.
 	 */
 	public void onEnable() {
+		version = this.getDescription().getVersion();
 		console = getServer().getConsoleSender();
 		dataFolder = getDataFolder();
 		defConfigStream = getResource("config.yml");
@@ -270,12 +272,28 @@ public class WhatIsIt extends JavaPlugin {
 			}
 	    }
 		showDataValues = config.getBoolean("config.display-data-values");
+
+    	// This is the WhatIsIt version, not the Minecraft version.
+		if (namesConfig.getString("version").compareTo(version) < 0) {
+	    	if (namesConfig.getString("version").compareTo("1.2.1") < 0) {
+	    		// These were reused/renamed by Minecraft:
+	    		namesConfig.set("items.373;6", defNamesConfig.getString("items.373;6"));
+	    		namesConfig.set("items.373;14", defNamesConfig.getString("items.373;14"));
+	    		namesConfig.set("items.373;54", defNamesConfig.getString("items.373;54"));
+	    		namesConfig.set("items.373;62", defNamesConfig.getString("items.373;62"));
+	    	}
+	    	namesConfig.set("version", version);
+	    	saveNamesConfig();
+		}
+    	
+    
     }
 
 	/**
 	 * Saves names.yml configuration file
 	 */
     private static void saveNamesConfig() {
+    	
     	try {
     		namesConfig.save(namesConfigFile);
 		} catch(IOException ex) {

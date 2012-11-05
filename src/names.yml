@@ -3,6 +3,7 @@
 # entity number 21, falling block, is converted to item table below.
 # item number 373, potion is a bit dynamic.
 
+version: '0.0.0'
 potion-parts:
   absolute-zero: Water Bottle
   prefix-bit-14: 'Splash '
@@ -463,7 +464,7 @@ items:
   '373;3': Potion of Fire Resistance
   '373;4': Potion of Poison
   '373;5': Potion of Healing
-  '373;6': Clear Potion
+  '373;6': Potion of Night Vision
   '373;7': Clear Potion
   '373;8': Potion of Weakness
   '373;9': Potion of Strength
@@ -471,7 +472,7 @@ items:
   '373;11': Diffuse Potion
   '373;12': Potion of Harming
   '373;13': Artless Potion
-  '373;14': Thin Potion
+  '373;14': Potion of Invisibility
   '373;15': Thin Potion
   '373;16': Awkward Potion
   '373;17': Potion of Regeneration

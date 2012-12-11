@@ -19,6 +19,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.craftbukkit.inventory.CraftItemStack;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -227,42 +228,41 @@ public class WhatIsIt extends JavaPlugin {
 	 * Loads config.yml and names.yml configuration files.
 	 */
     private static void loadConfig() {
-		if (configFile == null) {
-	    	configFile = new File(dataFolder, "config.yml");
-	    }
-	    config = YamlConfiguration.loadConfiguration(configFile);
-	 
-	    // Look for defaults in the jar
-	    if (defConfig != null) {
-	    	config.setDefaults(defConfig);
-	        defConfigStream = null;
-	    }
 	    if (defConfigStream != null) {
 	        defConfig = YamlConfiguration.loadConfiguration(defConfigStream);
-	        config.setDefaults(defConfig);
 	        defConfigStream = null;
+	    }
+		if (configFile == null) {
+	    	configFile = new File(dataFolder, "config.yml");
 	    }
 	    if (!configFile.exists() && defConfig != null) {
 	    	try {
 	    		defConfig.save(configFile);
 			} catch(IOException ex) {
-				log.severe(chatPrep(config.getString("messages.cannot-save-default-config")));
+				log.severe(chatPrep(defConfig.getString("messages.cannot-save-default-config")));
 			}
 	    }
-	    if (namesConfigFile == null) {
-	    	namesConfigFile = new File(dataFolder, "names.yml");
-	    }
-	    namesConfig = YamlConfiguration.loadConfiguration(namesConfigFile);
-	 
-	    // Look for defaults in the jar
-	    if (defNamesConfig != null) {
-	        namesConfig.setDefaults(defNamesConfig);
-	        defNamesConfigStream = null;
-	    }
+	    config = YamlConfiguration.loadConfiguration(configFile);
+    	config.setDefaults(defConfig);
+
+    	// Make sure any new or missing entries are added to the config.yml file so people can see them.
+		Map<String, Object> configValues = config.getDefaults().getValues(true);
+		for (Map.Entry<String, Object> configEntry : configValues.entrySet()) {
+			config.set(configEntry.getKey(), config.get(configEntry.getKey()));
+		}
+    	
+    	try {
+    		config.save(configFile);
+		} catch(IOException ex) {
+			log.severe(chatPrep(config.getString("messages.cannot-save-default-config")));
+		}
+
 	    if (defNamesConfigStream != null) {
 	        defNamesConfig = YamlConfiguration.loadConfiguration(defNamesConfigStream);
-	        namesConfig.setDefaults(defNamesConfig);
 	        defNamesConfigStream = null;
+	    }
+    	if (namesConfigFile == null) {
+	    	namesConfigFile = new File(dataFolder, "names.yml");
 	    }
 	    if (!namesConfigFile.exists() && defNamesConfig != null) {
 	    	try {
@@ -271,6 +271,9 @@ public class WhatIsIt extends JavaPlugin {
 				log.severe(chatPrep(config.getString("messages.cannot-save-default-names")));
 			}
 	    }
+	    namesConfig = YamlConfiguration.loadConfiguration(namesConfigFile);
+        namesConfig.setDefaults(defNamesConfig);
+
 		showDataValues = config.getBoolean("config.display-data-values");
 
     	// This is the WhatIsIt version, not the Minecraft version.
@@ -282,7 +285,18 @@ public class WhatIsIt extends JavaPlugin {
 	    		namesConfig.set("items.373;54", defNamesConfig.getString("items.373;54"));
 	    		namesConfig.set("items.373;62", defNamesConfig.getString("items.373;62"));
 	    	}
-	    	namesConfig.set("version", version);
+	    	if (namesConfig.getString("version").compareTo("1.3.0") < 0) {
+	    		// This was reassigned to allow %r and %a.
+	    		namesConfig.set("enchantmentlevels.UNKNOWN", defNamesConfig.getString("enchantmentlevels.UNKNOWN"));
+	    	}
+	    	
+	    	// Make sure any new entries are added to the names.yml file so people can see them.
+    		Map<String, Object> nameConfigValues = namesConfig.getDefaults().getValues(true);
+    		for (Map.Entry<String, Object> textConfigEntry : nameConfigValues.entrySet()) {
+    			namesConfig.set(textConfigEntry.getKey(), namesConfig.get(textConfigEntry.getKey()));
+    		}
+
+    		namesConfig.set("version", version);
 	    	saveNamesConfig();
 		}
     	
@@ -455,7 +469,34 @@ public class WhatIsIt extends JavaPlugin {
 		if (name == null) {
 			name = namesConfig.getString("enchantmentlevels.UNKNOWN");
 		}
+		name = name.replace("%r", romanNumerals(level)).replace("%a", level.toString());
 		return name;
+	}
+	
+	/**
+	 * Converts arabic to roman.
+	 * 
+	 * @param Integer arabic numeral
+	 * @return String roman numeral
+	 */
+	public static String romanNumerals(Integer level) {
+		if (level == null) return "0";
+		if (level == 0) return "0";
+		String res = "";
+		if (level < 0) {
+			res += "-";
+			level = 0 - level;
+		}
+	    String[] roman = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+	    int[] arabic  = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        for (int i = 0; i < roman.length; i++) {
+            while (level >= arabic[i]) {
+            	level -= arabic[i];
+            	res  += roman[i];
+            }
+        }
+	    
+		return res;
 	}
 	
 	/**
@@ -495,10 +536,9 @@ public class WhatIsIt extends JavaPlugin {
 			// Monster Spawner, get type for data to pass to itemName:
 			CreatureSpawner spawner = (CreatureSpawner) block.getState();
 			blockData = (byte) spawner.getSpawnedType().getTypeId();
-		} else {
-			
 		}
 		ItemStack item = new ItemStack(block.getType(), 1, (short) 0, blockData);
+		
 		return itemName(item, showData, newName);
 	}
 	
@@ -668,6 +708,12 @@ public class WhatIsIt extends JavaPlugin {
 				data = Short.toString(potionData);
 			}
 		}
+		if (typeId.equals("397") && data.equals("3") && item instanceof CraftItemStack) {
+			String headOwner = getHeadOwner((CraftItemStack) item);
+			if (headOwner != null) {
+				name = namesConfig.getString("special.players-head").replace("%p", headOwner);
+			}
+		}
 		
 		if (newName != null) {
 			namesConfig.set("items." + typeId + ";" + data, newName);
@@ -700,4 +746,17 @@ public class WhatIsIt extends JavaPlugin {
         perms = rsp.getProvider();
         return perms != null;
     }
+
+	/**
+	 * Retrieves the owner of a head.
+	 * 
+	 * @param CraftItemStack head to identify
+	 * @return String name of head owner
+	 */
+	public static String getHeadOwner(CraftItemStack item) {
+		if (item == null) return null;
+		if (item.getHandle().getTag() == null) return null;
+		if (!item.getHandle().getTag().hasKey("SkullOwner")) return null;
+		return item.getHandle().getTag().getString("SkullOwner");
+	}
 }

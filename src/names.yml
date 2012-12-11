@@ -8,6 +8,8 @@ potion-parts:
   absolute-zero: Water Bottle
   prefix-bit-14: 'Splash '
   suffix-bit-6: ' (Ext)'
+special:
+  players-head: '%p''s Head'
 entities:
   'UNKNOWN': Unknown
   '2;0': Experience Orb
@@ -615,10 +617,4 @@ enchantments:
   '51': Infinity
   
 enchantmentlevels:
-  'UNKNOWN': '?'
-  '1': I
-  '2': II
-  '3': III
-  '4': IV
-  '5': V
-
+  'UNKNOWN': '%r'

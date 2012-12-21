@@ -19,7 +19,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.craftbukkit.inventory.CraftItemStack;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -30,6 +29,8 @@ import org.bukkit.entity.Sheep;
 import org.bukkit.entity.Villager;
 import org.bukkit.entity.Wolf;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
@@ -537,6 +538,7 @@ public class WhatIsIt extends JavaPlugin {
 			CreatureSpawner spawner = (CreatureSpawner) block.getState();
 			blockData = (byte) spawner.getSpawnedType().getTypeId();
 		}
+		@SuppressWarnings("deprecation")
 		ItemStack item = new ItemStack(block.getType(), 1, (short) 0, blockData);
 		
 		return itemName(item, showData, newName);
@@ -708,8 +710,8 @@ public class WhatIsIt extends JavaPlugin {
 				data = Short.toString(potionData);
 			}
 		}
-		if (typeId.equals("397") && data.equals("3") && item instanceof CraftItemStack) {
-			String headOwner = getHeadOwner((CraftItemStack) item);
+		if (typeId.equals("397") && data.equals("3")) {
+			String headOwner = getHeadOwner((ItemStack) item);
 			if (headOwner != null) {
 				name = namesConfig.getString("special.players-head").replace("%p", headOwner);
 			}
@@ -753,10 +755,13 @@ public class WhatIsIt extends JavaPlugin {
 	 * @param CraftItemStack head to identify
 	 * @return String name of head owner
 	 */
-	public static String getHeadOwner(CraftItemStack item) {
+	public static String getHeadOwner(ItemStack item) {
 		if (item == null) return null;
-		if (item.getHandle().getTag() == null) return null;
-		if (!item.getHandle().getTag().hasKey("SkullOwner")) return null;
-		return item.getHandle().getTag().getString("SkullOwner");
+		ItemMeta itemMeta = item.getItemMeta();
+		if (itemMeta == null) return null;
+		if (itemMeta instanceof SkullMeta) {
+			return ((SkullMeta)itemMeta).getOwner();
+		}
+		return null;
 	}
 }

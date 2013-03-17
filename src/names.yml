@@ -24,8 +24,16 @@ entities:
   '18;0': Item Frame
   '19:0': Wither Skull
   '20;0': Primed TNT
-  '40;0': Minecart
+  '22;0': Firework Rocket
   '41;0': Boat
+  '42;0': Minecart
+  '43;0': Minecart with Chest
+  '44;0': Minecart with Furnace
+  '45;0': Minecart with TNT
+  '46;0': Minecart with Hopper
+  '47;0': Minecart with Spawner
+  '48;0': Mob
+  '49;0': Monster
   '50;0': Creeper
   '51;0': Skeleton 
   '52;0': Spider
@@ -160,12 +168,18 @@ items:
   '43;3': Cobblestone Double Slab
   '43;4': Brick Double Slab
   '43;5': Stone Brick Double Slab
+  '43;6': Nether Brick Double Slab
+  '43;7': Quartz Double Slab
+  '43;8': Smooth Stone Double Slab
+  '43;9': Smooth Sandstone Double Slab
   '44;0': Stone Slab
   '44;1': Sandstone Slab
   '44;2': Wooden Stone Slab
   '44;3': Cobblestone Slab
   '44;4': Brick Slab
   '44;5': Stone Brick Slab
+  '44;6': Nether Brick Slab
+  '44;7': Quartz Slab
   '45;0': Bricks
   '46;0': TNT
   '47;0': Bookshelf
@@ -326,6 +340,24 @@ items:
   '145;9': Very Damaged Anvil
   '145;10': Very Damaged Anvil
   '145;11': Very Damaged Anvil
+  '146;0': Trapped Chest 
+  '147;0': Weighted Pressure Plate (Light)
+  '148;0': Weighted Pressure Plate (Heavy)
+  '149;0': Redstone Comparator (inactive)
+  '150;0': Redstone Comparator (active)
+  '151;0': Daylight Sensor
+  '152;0': Block of Redstone
+  '153;0': Nether Quartz Ore
+  '154;0': Hopper
+  '155;0': Block of Quartz
+  '155;1': Chiseled Quartz Block
+  '155;2': Pillar Quartz Block
+  '155;3': Pillar Quartz Block
+  '155;4': Pillar Quartz Block
+  '156;0': Quartz Stairs
+  '157;0': Activator Rail
+  '158;0': Hopper
+  '159;0': Dropper
   '256;0': Iron Shovel
   '257;0': Iron Pickaxe
   '258;0': Iron Axe
@@ -583,6 +615,11 @@ items:
   '401;0': Firework Rocket
   '402;0': Firework Star
   '403;0': Enchanted Book
+  '404;0': Redstone Comparator
+  '405;0': Nether Brick
+  '406;0': Nether Quartz
+  '407;0': Minecart with TNT
+  '408;0': Minecart with Hopper
   '2256;0': 13 Disc (yellow)
   '2257;0': Cat Disc (green)
   '2258;0': Blocks Disc (orange)
@@ -594,6 +631,7 @@ items:
   '2264;0': Strad Disc (white)
   '2265;0': Ward Disc (dark green)
   '2266;0': 11 Disc (broken)
+  '2267;0': wait Disc (blue)
 
 enchantments:
   'UNKNOWN': Unknown

@@ -290,6 +290,11 @@ public class WhatIsIt extends JavaPlugin {
 	    		// This was reassigned to allow %r and %a.
 	    		namesConfig.set("enchantmentlevels.UNKNOWN", defNamesConfig.getString("enchantmentlevels.UNKNOWN"));
 	    	}
+	    	if (namesConfig.getString("version").compareTo("1.3.5") < 0) {
+	    		// I screwed these up, sorry.
+	    		namesConfig.set("items.158;0", defNamesConfig.getString("items.158;0"));
+	    		namesConfig.set("items.159;0", defNamesConfig.getString("items.159;0"));
+	    	}
 	    	
 	    	// Make sure any new entries are added to the names.yml file so people can see them.
     		Map<String, Object> nameConfigValues = namesConfig.getDefaults().getValues(true);

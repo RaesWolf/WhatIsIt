@@ -189,7 +189,7 @@ public class WhatIsIt extends JavaPlugin {
 	 */
     private static String chatPrep(String message) {
     	message = config.getString("messages.prefix") + message;
-    	message = ChatColor.translateAlternateColorCodes('&', message);//message.replaceAll("&([0-9a-fA-F])", "§$1");
+    	message = ChatColor.translateAlternateColorCodes('&', message);//message.replaceAll("&([0-9a-fA-F])", "ï¿½$1");
     	return message;
     }
 
@@ -558,8 +558,11 @@ public class WhatIsIt extends JavaPlugin {
 	private static String playerName(Player player) {
 		if (player == null) {
 			return namesConfig.getString("entities.UNKNOWN");
-		}
-		return player.getName();
+		} else if (player.getDisplayName().equals(ChatColor.stripColor(player.getName()))) {
+			return player.getDisplayName();
+        	} else {
+        		return player.getName() + " | " + player.getDisplayName();
+        	}
 	}
 	
 	/**

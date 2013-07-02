@@ -50,6 +50,7 @@ public class WhatIsIt extends JavaPlugin {
 	private static InputStream defConfigStream;
 	private static FileConfiguration config = null;
 	private static boolean showDataValues = false;
+	private static boolean useDisplayName = false;
 	private static File namesConfigFile = null;
 	private static InputStream defNamesConfigStream;
 	private static FileConfiguration namesConfig = null;
@@ -276,6 +277,7 @@ public class WhatIsIt extends JavaPlugin {
         namesConfig.setDefaults(defNamesConfig);
 
 		showDataValues = config.getBoolean("config.display-data-values");
+		useDisplayName = config.getBoolean("config.use-display-name");
 
     	// This is the WhatIsIt version, not the Minecraft version.
 		if (namesConfig.getString("version").compareTo(version) < 0) {
@@ -559,7 +561,11 @@ public class WhatIsIt extends JavaPlugin {
 		if (player == null) {
 			return namesConfig.getString("entities.UNKNOWN");
 		}
-		return player.getName();
+		if (useDisplayName) {
+			return player.getName();
+		} else {
+			return player.getDisplayName();
+		}
 	}
 	
 	/**
@@ -609,7 +615,7 @@ public class WhatIsIt extends JavaPlugin {
 		
 		if (entity.getType() == EntityType.SHEEP) {
 			Sheep sheep = (Sheep) entity;
-			data = Byte.toString(sheep.getColor().getData());
+			data = Byte.toString(sheep.getColor().getDyeData());
 		} else if (entity.getType() == EntityType.OCELOT) {
 			Ocelot ocelot = (Ocelot) entity;
 			data = Integer.toString(ocelot.getCatType().getId());

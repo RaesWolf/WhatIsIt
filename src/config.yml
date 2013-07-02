@@ -3,6 +3,7 @@
 #
 config:
   display-data-values: true
+  use-display-name: false
 messages:
   prefix: '&F[&AWhat&7Is&CIt&F] '
   enchantment-level: ' Lvl. '

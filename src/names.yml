@@ -13,6 +13,7 @@ special:
 entities:
   'UNKNOWN': Unknown
   '2;0': Experience Orb
+  '8;0': Lead Knot
   '9;0': Painting
   '10;0': Shot Arrow
   '11;0': Thrown Snowball
@@ -35,7 +36,8 @@ entities:
   '48;0': Mob
   '49;0': Monster
   '50;0': Creeper
-  '51;0': Skeleton 
+  '51;0': Skeleton
+  '51;1': Wither Skeleton
   '52;0': Spider
   '53;0': Giant
   '54;0': Zombie
@@ -60,7 +62,7 @@ entities:
   '91;5': Lime Sheep
   '91;6': Pink Sheep
   '91;7': Gray Sheep
-  '91;8': Silver Sheep
+  '91;8': Light Gray Sheep
   '91;9': Cyan Sheep
   '91;10': Purple Sheep
   '91;11': Blue Sheep
@@ -79,6 +81,10 @@ entities:
   '98;2': Tuxedo Cat
   '98;3': Siamese Cat
   '99;0': Iron Golem
+  '100;0': Horse
+  '100;1': Donkey
+  '100;2': Mule
+  '100;3': Undead Horse
   '120;0': Farmer Villager
   '120;1': Librarian Villager
   '120;2': Priest Villager
@@ -357,6 +363,41 @@ items:
   '156;0': Quartz Stairs
   '157;0': Activator Rail
   '158;0': Dropper
+  '159;0': White Stained Clay
+  '159;1': Orange Stained Clay
+  '159;2': Magenta Stained Clay
+  '159;3': Light Blue Stained Clay
+  '159;4': Yellow Stained Clay
+  '159;5': Lime Stained Clay
+  '159;6': Pink Stained Clay
+  '159;7': Gray Stained Clay
+  '159;8': Light Gray Stained Clay
+  '159;9': Cyan Stained Clay
+  '159;10': Purple Stained Clay
+  '159;11': Blue Stained Clay
+  '159;12': Brown Stained Clay
+  '159;13': Green Stained Clay
+  '159;14': Red Stained Clay
+  '159;15': Black Stained Clay
+  '170;0': Hay Bale
+  '171;0': White Carpet
+  '171;1': Orange Carpet
+  '171;2': Magenta Carpet
+  '171;3': Light Blue Carpet
+  '171;4': Yellow Carpet
+  '171;5': Lime Carpet
+  '171;6': Pink Carpet
+  '171;7': Gray Carpet
+  '171;8': Light Gray Carpet
+  '171;9': Cyan Carpet
+  '171;10': Purple Carpet
+  '171;11': Blue Carpet
+  '171;12': Brown Carpet
+  '171;13': Green Carpet
+  '171;14': Red Carpet
+  '171;15': Black Carpet
+  '172;0': Hardened Clay
+  '173;0' Block of Coal
   '256;0': Iron Shovel
   '257;0': Iron Pickaxe
   '258;0': Iron Axe
@@ -484,7 +525,7 @@ items:
   '363;0': Raw Beef
   '364;0': Steak
   '365;0': Raw Chicken
-  '366;0': Fried Chicken
+  '366;0': Cooked Chicken
   '367;0': Rotten Flesh
   '368;0': Ender pearl
   '369;0': Blaze Rod
@@ -619,18 +660,23 @@ items:
   '406;0': Nether Quartz
   '407;0': Minecart with TNT
   '408;0': Minecart with Hopper
-  '2256;0': 13 Disc (yellow)
-  '2257;0': Cat Disc (green)
-  '2258;0': Blocks Disc (orange)
-  '2259;0': Chirp Disc (red)
-  '2260;0': Far Disc (lime)
-  '2261;0': Mall Disc (purple)
-  '2262;0': Mellohi Disc (pink)
-  '2263;0': Stal Disc (black)
-  '2264;0': Strad Disc (white)
-  '2265;0': Ward Disc (dark green)
-  '2266;0': 11 Disc (broken)
-  '2267;0': wait Disc (blue)
+  '417;0': Iron Horse Armor
+  '418;0': Gold Horse Armor
+  '419;0': Diamond Horse Armor
+  '420;0': Lead
+  '421;0': Name Tag
+  '2256;0': 13 Disc
+  '2257;0': Cat Disc
+  '2258;0': Blocks Disc
+  '2259;0': Chirp Disc
+  '2260;0': Far Disc
+  '2261;0': Mall Disc
+  '2262;0': Mellohi Disc
+  '2263;0': Stal Disc
+  '2264;0': Strad Disc
+  '2265;0': Ward Disc
+  '2266;0': 11 Disc
+  '2267;0': wait Disc
 
 enchantments:
   'UNKNOWN': Unknown

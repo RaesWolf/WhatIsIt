@@ -26,6 +26,7 @@ import org.bukkit.entity.Item;
 import org.bukkit.entity.Ocelot;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Sheep;
+import org.bukkit.entity.Skeleton;
 import org.bukkit.entity.Villager;
 import org.bukkit.entity.Wolf;
 import org.bukkit.inventory.ItemStack;
@@ -296,6 +297,32 @@ public class WhatIsIt extends JavaPlugin {
 	    		// I screwed these up, sorry.
 	    		namesConfig.set("items.158;0", defNamesConfig.getString("items.158;0"));
 	    		namesConfig.set("items.159;0", defNamesConfig.getString("items.159;0"));
+	    	}
+	    	if (namesConfig.getString("version").compareTo("1.3.6") < 0) {
+	    		// These were wrongly set.
+	    		namesConfig.set("entities.19:0", null);
+	    		namesConfig.set("entities.65:0", null);
+	    		namesConfig.set("entities.66:0", null);
+	    		
+	    		// I decided to remove my joke of "Fried Chicken" instead of "Cooked Chicken"...dont' know if anyone even saw it.
+	    		namesConfig.set("items.366;0", defNamesConfig.getString("items.366;0"));
+	    		
+	    		// Changed silver sheep to be in line with the other items that color (light gray).
+	    		namesConfig.set("entities.91;8", defNamesConfig.getString("items.91;8"));
+	    		
+	    		// Renamed Discs
+	    		namesConfig.set("items.2256;0", defNamesConfig.getString("items.2256;0"));
+	    		namesConfig.set("items.2257;0", defNamesConfig.getString("items.2257;0"));
+	    		namesConfig.set("items.2258;0", defNamesConfig.getString("items.2258;0"));
+	    		namesConfig.set("items.2259;0", defNamesConfig.getString("items.2259;0"));
+	    		namesConfig.set("items.2260;0", defNamesConfig.getString("items.2260;0"));
+	    		namesConfig.set("items.2261;0", defNamesConfig.getString("items.2261;0"));
+	    		namesConfig.set("items.2262;0", defNamesConfig.getString("items.2262;0"));
+	    		namesConfig.set("items.2263;0", defNamesConfig.getString("items.2263;0"));
+	    		namesConfig.set("items.2264;0", defNamesConfig.getString("items.2264;0"));
+	    		namesConfig.set("items.2265;0", defNamesConfig.getString("items.2265;0"));
+	    		namesConfig.set("items.2266;0", defNamesConfig.getString("items.2266;0"));
+	    		namesConfig.set("items.2267;0", defNamesConfig.getString("items.2267;0"));
 	    	}
 	    	
 	    	// Make sure any new entries are added to the names.yml file so people can see them.
@@ -613,7 +640,15 @@ public class WhatIsIt extends JavaPlugin {
 		String owner_prefix = "";
 		typeId = Short.toString(entity.getType().getTypeId());
 		
-		if (entity.getType() == EntityType.SHEEP) {
+		// TODO: Add horse type.
+/*		if (entity.getType() == EntityType.HORSE) {
+			Horse horsey = (Horse) entity;
+			data = Integer.toString(horsey.);
+		} else*/ 
+		if (entity.getType() == EntityType.SKELETON) {
+			Skeleton skelly = (Skeleton) entity;
+			data = Integer.toString(skelly.getSkeletonType().ordinal());
+		} else if (entity.getType() == EntityType.SHEEP) {
 			Sheep sheep = (Sheep) entity;
 			data = Byte.toString(sheep.getColor().getDyeData());
 		} else if (entity.getType() == EntityType.OCELOT) {

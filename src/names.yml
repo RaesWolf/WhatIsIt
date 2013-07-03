@@ -23,7 +23,7 @@ entities:
   '15;0': Thrown Eye of Ender
   '17;0': Thrown Bottle o' Enchanting
   '18;0': Item Frame
-  '19:0': Wither Skull
+  '19;0': Wither Skull
   '20;0': Primed TNT
   '22;0': Firework Rocket
   '41;0': Boat
@@ -51,8 +51,8 @@ entities:
   '62;0': Magma Cube
   '63;0': Ender Dragon
   '64;0': Wither
-  '65:0': Bat
-  '66:0': Witch
+  '65;0': Bat
+  '66;0': Witch
   '90;0': Pig
   '91;0': White Sheep
   '91;1': Orange Sheep
@@ -397,7 +397,7 @@ items:
   '171;14': Red Carpet
   '171;15': Black Carpet
   '172;0': Hardened Clay
-  '173;0' Block of Coal
+  '173;0': Block of Coal
   '256;0': Iron Shovel
   '257;0': Iron Pickaxe
   '258;0': Iron Axe
@@ -630,6 +630,8 @@ items:
   '383;95': Wolf Spawn Egg
   '383;96': Mooshroom Spawn Egg
   '383;98': Ocelot Spawn Egg
+  '383;99': Iron Golem Spawn Egg
+  '383;100': Horse Spawn Egg
   '383;120': Villager Spawn Egg
   '384;0': Bottle o' Enchanting
   '385;0': Fire Charge
@@ -676,7 +678,7 @@ items:
   '2264;0': Strad Disc
   '2265;0': Ward Disc
   '2266;0': 11 Disc
-  '2267;0': wait Disc
+  '2267;0': Wait Disc
 
 enchantments:
   'UNKNOWN': Unknown

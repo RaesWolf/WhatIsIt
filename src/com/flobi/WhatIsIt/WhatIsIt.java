@@ -22,6 +22,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Horse;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Ocelot;
 import org.bukkit.entity.Player;
@@ -640,12 +641,10 @@ public class WhatIsIt extends JavaPlugin {
 		String owner_prefix = "";
 		typeId = Short.toString(entity.getType().getTypeId());
 		
-		// TODO: Add horse type.
-/*		if (entity.getType() == EntityType.HORSE) {
+		if (entity.getType() == EntityType.HORSE) {
 			Horse horsey = (Horse) entity;
-			data = Integer.toString(horsey.);
-		} else*/ 
-		if (entity.getType() == EntityType.SKELETON) {
+			data = Integer.toString(horsey.getVariant().ordinal());
+		} else if (entity.getType() == EntityType.SKELETON) {
 			Skeleton skelly = (Skeleton) entity;
 			data = Integer.toString(skelly.getSkeletonType().ordinal());
 		} else if (entity.getType() == EntityType.SHEEP) {

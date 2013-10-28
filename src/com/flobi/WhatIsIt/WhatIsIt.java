@@ -325,6 +325,11 @@ public class WhatIsIt extends JavaPlugin {
 	    		namesConfig.set("items.2266;0", defNamesConfig.getString("items.2266;0"));
 	    		namesConfig.set("items.2267;0", defNamesConfig.getString("items.2267;0"));
 	    	}
+	    	if (namesConfig.getString("version").compareTo("1.3.7") < 0) {
+	    		// Rose renamed to poppy, locked chest reused as stained glass in Minecraft 1.7.
+	    		namesConfig.set("items.38;0", defNamesConfig.getString("items.38;0"));
+	    		namesConfig.set("items.95;0", defNamesConfig.getString("items.95;0"));
+	    	}
 	    	
 	    	// Make sure any new entries are added to the names.yml file so people can see them.
     		Map<String, Object> nameConfigValues = namesConfig.getDefaults().getValues(true);

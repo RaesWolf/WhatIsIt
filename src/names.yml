@@ -551,7 +551,11 @@ items:
   '347;0': Clock
   '348;0': Glowstone Dust
   '349;0': Raw Fish
+  '349;1': Raw Salmon
+  '349;2': Clownfish
+  '349;3': Pufferfish
   '350;0': Cooked Fish
+  '350;0': Cooked Salmon
   '351;0': Ink Sac
   '351;1': Rose Red
   '351;2': Cactus Green

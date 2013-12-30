@@ -329,6 +329,9 @@ public class WhatIsIt extends JavaPlugin {
 	    		// Rose renamed to poppy, locked chest reused as stained glass in Minecraft 1.7.
 	    		namesConfig.set("items.38;0", defNamesConfig.getString("items.38;0"));
 	    		namesConfig.set("items.95;0", defNamesConfig.getString("items.95;0"));
+	    		// Potion of Water Breathing takes two slots and replaces other unused ones.
+	    		namesConfig.set("items.373;13", defNamesConfig.getString("items.373;13"));
+	    		namesConfig.set("items.373;45", defNamesConfig.getString("items.373;45"));
 	    	}
 	    	
 	    	// Make sure any new entries are added to the names.yml file so people can see them.

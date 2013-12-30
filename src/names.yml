@@ -606,7 +606,7 @@ items:
   '373;10': Potion of Slowness
   '373;11': Diffuse Potion
   '373;12': Potion of Harming
-  '373;13': Artless Potion
+  '373;13': Potion of Water Breathing
   '373;14': Potion of Invisibility
   '373;15': Thin Potion
   '373;16': Awkward Potion
@@ -638,7 +638,7 @@ items:
   '373;42': Potion of Slowness
   '373;43': Refined Potion
   '373;44': Potion of Harming II
-  '373;45': Cordial Potion
+  '373;45': Potion of Water Breathing
   '373;46': Sparkling Potion
   '373;47': Sparkling Potion
   '373;48': Potent Potion

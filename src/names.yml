@@ -171,6 +171,14 @@ items:
   '36;0': Block moved by Piston
   '37;0': Dandelion
   '38;0': Poppy
+  '38;1': Blue Orchid
+  '38;2': Allium
+  '38;3': Azure Bluet
+  '38;4': Red Tulip
+  '38;5': Orange Tulip
+  '38;6': White Tulip
+  '38;7': Pink Tulip
+  '38;8': Oxeye Daisy
   '39;0': Brown Mushroom
   '40;0': Red Mushroom
   '41;0': Block of Gold
@@ -449,12 +457,12 @@ items:
   '175;3': Large Fern
   '175;4': Rose Bush
   '175;5': Peony
-  '175;8': Sunflower (top)
-  '175;9': Lilac (top)
-  '175;10': Double Tallgrass (top)
-  '175;11': Large Fern (top)
-  '175;12': Rose Bush (top)
-  '175;13': Peony (top)
+  '175;8': Large Plant Top
+  '175;9': Large Plant Top
+  '175;10': Large Plant Top
+  '175;11': Large Plant Top
+  '175;12': Large Plant Top
+  '175;13': Large Plant Top
   '256;0': Iron Shovel
   '257;0': Iron Pickaxe
   '258;0': Iron Axe

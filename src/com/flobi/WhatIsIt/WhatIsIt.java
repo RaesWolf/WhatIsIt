@@ -192,7 +192,7 @@ public class WhatIsIt extends JavaPlugin {
 	 */
     private static String chatPrep(String message) {
     	message = config.getString("messages.prefix") + message;
-    	message = ChatColor.translateAlternateColorCodes('&', message);//message.replaceAll("&([0-9a-fA-F])", "§$1");
+    	message = ChatColor.translateAlternateColorCodes('&', message);
     	return message;
     }
 

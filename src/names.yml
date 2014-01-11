@@ -98,6 +98,7 @@ items:
   '1;0': Stone
   '2;0': Grass
   '3;0': Dirt
+  '3;2': Podzol
   '4;0': Cobblestone
   '5;0': Oak Plank
   '5;1': Pine Plank
@@ -431,6 +432,8 @@ items:
   '160;15': Black Stained Glass Pane
   '161;0': Acacia Leaves
   '161;1': Dark Oak Leaves
+  '162;0': Acacia Log
+  '163;1': Dark Oak Log
   '170;0': Hay Bale
   '171;0': White Carpet
   '171;1': Orange Carpet

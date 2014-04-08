@@ -666,6 +666,26 @@ items:
   '373;61': Gross Potion
   '373;62': Potion of Invisibility
   '373;63': Stinky Potion
+  '373;768': Potion of Haste
+  '373;800': Potion of Haste II
+  '373;1024': Potion of Dullness
+  '373;1056': Potion of Dullness II
+  '373;2048': Potion of Leaping
+  '373;2080': Potion of Leaping II
+  '373;2304': Potion of Nausea
+  '373;2816': Potion of Resistance
+  '373;2848': Potion of Resistance II
+  '373;3840': Potion of Blindness
+  '373;4352': Potion of Hunger
+  '373;4384': Potion of Hunger II
+  '373;5120': Potion of Decay
+  '373;5152': Potion of Decay II
+  '373;5376': Potion of Health Boost
+  '373;5408': Potion of Health Boost II
+  '373;5632': Potion of Absorption
+  '373;5664': Potion of Absorption II
+  '373;5888': Potion of Saturation
+  '373;5920': Potion of Saturation II
   '374;0': Glass Bottle
   '375;0': Spider Eye
   '376;0': Fermented Spider Eye

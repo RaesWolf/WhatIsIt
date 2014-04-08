@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import net.milkbowl.vault.permission.Permission;
 
 import org.apache.commons.lang.StringUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.block.Block;
 import org.bukkit.block.CreatureSpawner;
@@ -35,7 +36,12 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.Potion;
 import org.bukkit.util.Vector;
+
+import com.gmail.nossr50.api.ExperienceAPI;
+import com.gmail.nossr50.config.skills.alchemy.PotionConfig;
+import com.gmail.nossr50.datatypes.skills.alchemy.AlchemyPotion;
 
 /**
  * 
@@ -44,7 +50,7 @@ import org.bukkit.util.Vector;
  * 
  * @author Joshua "Flobi" Hatfield
  */
-
+ 
 public class WhatIsIt extends JavaPlugin {
 	private static final Logger log = Logger.getLogger("Minecraft");
 
@@ -333,6 +339,29 @@ public class WhatIsIt extends JavaPlugin {
 	    		namesConfig.set("items.373;13", defNamesConfig.getString("items.373;13"));
 	    		namesConfig.set("items.373;45", defNamesConfig.getString("items.373;45"));
 	    	}
+	    	if (namesConfig.getString("version").compareTo("1.3.8") < 0) {
+	    		// mcMMO Alchemy Potions
+	    		namesConfig.set("items.373;768", defNamesConfig.getString("items.373;768"));
+	    		namesConfig.set("items.373;800", defNamesConfig.getString("items.373;800"));
+	    		namesConfig.set("items.373;1024", defNamesConfig.getString("items.373;1024"));
+	    		namesConfig.set("items.373;1056", defNamesConfig.getString("items.373;1056"));
+	    		namesConfig.set("items.373;2048", defNamesConfig.getString("items.373;2048"));
+	    		namesConfig.set("items.373;2080", defNamesConfig.getString("items.373;2080"));
+	    		namesConfig.set("items.373;2304", defNamesConfig.getString("items.373;2304"));
+	    		namesConfig.set("items.373;2816", defNamesConfig.getString("items.373;2816"));
+	    		namesConfig.set("items.373;2848", defNamesConfig.getString("items.373;2848"));
+	    		namesConfig.set("items.373;3840", defNamesConfig.getString("items.373;3840"));
+	    		namesConfig.set("items.373;4352", defNamesConfig.getString("items.373;4352"));
+	    		namesConfig.set("items.373;4384", defNamesConfig.getString("items.373;4384"));
+	    		namesConfig.set("items.373;5120", defNamesConfig.getString("items.373;5120"));
+	    		namesConfig.set("items.373;5152", defNamesConfig.getString("items.373;5152"));
+	    		namesConfig.set("items.373;5376", defNamesConfig.getString("items.373;5376"));
+	    		namesConfig.set("items.373;5408", defNamesConfig.getString("items.373;5408"));
+	    		namesConfig.set("items.373;5632", defNamesConfig.getString("items.373;5632"));
+	    		namesConfig.set("items.373;5664", defNamesConfig.getString("items.373;5664"));
+	    		namesConfig.set("items.373;5888", defNamesConfig.getString("items.373;5888"));
+	    		namesConfig.set("items.373;5920", defNamesConfig.getString("items.373;5920"));
+	    	}
 	    	
 	    	// Make sure any new entries are added to the names.yml file so people can see them.
     		Map<String, Object> nameConfigValues = namesConfig.getDefaults().getValues(true);
@@ -343,8 +372,6 @@ public class WhatIsIt extends JavaPlugin {
     		namesConfig.set("version", version);
 	    	saveNamesConfig();
 		}
-    	
-    
     }
 
 	/**
@@ -749,8 +776,20 @@ public class WhatIsIt extends JavaPlugin {
 			if (potionData == 0) {
 				name = namesConfig.getString("potion-parts.absolute-zero");
 			} else {
+				boolean isAlchemyPotion = false;
+				boolean alchemyPotionIsExtended = false;
+				if (Bukkit.getPluginManager().isPluginEnabled("mcMMO") && ExperienceAPI.isValidSkillType("alchemy")) {
+					AlchemyPotion alchemyPotion = PotionConfig.getInstance().getPotion(item.getDurability());
+					if (alchemyPotion != null && !alchemyPotion.getEffects().isEmpty()) {
+						Potion potion = Potion.fromItemStack(item);
+						alchemyPotionIsExtended = potion.hasExtendedDuration();
+						isAlchemyPotion = true;
+					}
+				}
 				for (short bitPos = 14; bitPos > 5; bitPos--) {
-					
+					if (isAlchemyPotion && ((bitPos == 6 && !alchemyPotionIsExtended) || (bitPos > 6 && bitPos < 13) )) {
+						continue;
+					}
 					short bitPow = (short) Math.pow(2, bitPos);
 					if (potionData >= bitPow) {
 						potionData -= bitPow;

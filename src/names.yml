@@ -26,6 +26,7 @@ entities:
   '19;0': Wither Skull
   '20;0': Primed TNT
   '22;0': Firework Rocket
+  '30;0': Armor Stand
   '41;0': Boat
   '42;0': Minecart
   '43;0': Minecart with Chest
@@ -53,6 +54,8 @@ entities:
   '64;0': Wither
   '65;0': Bat
   '66;0': Witch
+  '67;0': Endermite
+  '68;0': Guardian
   '90;0': Pig
   '91;0': White Sheep
   '91;1': Orange Sheep
@@ -85,6 +88,7 @@ entities:
   '100;1': Donkey
   '100;2': Mule
   '100;3': Undead Horse
+  '101;0': Rabbit
   '120;0': Farmer Villager
   '120;1': Librarian Villager
   '120;2': Priest Villager
@@ -96,18 +100,25 @@ items:
   'UNKNOWN': Unknown
   '0;0': Air
   '1;0': Stone
+  '1;1': Granite
+  '1;2': Polished Granite
+  '1;3': Diorite
+  '1;4': Polished Diorite
+  '1;5': Andesite
+  '1;6': Polished Andesite
   '2;0': Grass
   '3;0': Dirt
+  '3;1': Coarse Dirt
   '3;2': Podzol
   '4;0': Cobblestone
   '5;0': Oak Plank
-  '5;1': Pine Plank
+  '5;1': Spruce Plank
   '5;2': Birch Plank
   '5;3': Jungle Plank
   '5;4': Acacia Plank
   '5;5': Dark Oak Plank
   '6;0': Oak Sapling
-  '6;1': Pine Sapling
+  '6;1': Spruce Sapling
   '6;2': Birch Sapling
   '6;3': Jungle Sapling
   '6;4': Acacia Sapling
@@ -124,14 +135,15 @@ items:
   '15;0': Iron Ore
   '16;0': Coal Ore
   '17;0': Oak Log
-  '17;1': Pine Log
+  '17;1': Spruce Log
   '17;2': Birch Log
   '17;3': Jungle Log
   '18;0': Oak Leaves
-  '18;1': Pine Leaves
+  '18;1': Spruce Leaves
   '18;2': Birch Leaves
   '18;3': Jungle Leaves
   '19;0': Sponge
+  '19;1': Wet Sponge
   '20;0': Glass
   '21;0': Lapis Lazuli Ore
   '22;0': Lapis Lazuli Block
@@ -139,7 +151,7 @@ items:
   '24;0': Sandstone
   '24;1': Decorative Sandstone
   '24;2': Smooth Sandstone
-  '25;0': Note Lock
+  '25;0': Note Block
   '26;0': Bed
   '27;0': Powered Rail
   '28;0': Detector Rail
@@ -244,7 +256,7 @@ items:
   '61;0': Furnace
   '62;0': Burning Furnace
   '63;0': Sign Post
-  '64;0': Wooden Door
+  '64;0': Oak Door
   '65;0': Ladder
   '66;0': Rails
   '67;0': Cobblestone Stairs
@@ -265,7 +277,7 @@ items:
   '82;0': Clay Block
   '83;0': Sugar Cane
   '84;0': Jukebox
-  '85;0': Fence
+  '85;0': Oak Fence
   '86;0': Pumpkin
   '87;0': Netherrack
   '88;0': Soul Sand
@@ -291,7 +303,7 @@ items:
   '95;13': Green Stained Glass
   '95;14': Red Stained Glass
   '95;15': Black Stained Glass
-  '96;0': Trapdoor
+  '96;0': Wooden Trapdoor
   '97;0': Stone Hidden Silverfish
   '97;1': Cobblestone Hidden Silverfish
   '97;2': Stone Brick Hidden Silverfish
@@ -307,7 +319,7 @@ items:
   '104;0': Pumpkin Stem
   '105;0': Melon Stem
   '106;0': Vines
-  '107;0': Fence Gate
+  '107;0': Oak Fence Gate
   '108;0': Brick Stairs
   '109;0': Stone Brick Stairs
   '110;0': Mycelium
@@ -326,13 +338,13 @@ items:
   '123;0': Redstone Lamp (off)
   '124;0': Redstone Lamp (on)
   '125;0': Oak Plank Double Slab
-  '125;1': Pine Plank Double Slab
+  '125;1': Spruce Plank Double Slab
   '125;2': Birch Plank Double Slab
   '125;3': Jungle Plank Double Slab
   '125;4': Acacia Plank Double Slab
   '125;5': Dark Oak Plank Double Slab
   '126;0': Oak Plank Slab
-  '126;1': Pine Plank Slab
+  '126;1': Spruce Plank Slab
   '126;2': Birch Plank Slab
   '126;3': Jungle Plank Slab
   '126;4': Acacia Plank Slab
@@ -344,7 +356,7 @@ items:
   '131;0': Tripwire Hook
   '132;0': Tripwire
   '133;0': Block of Emerald
-  '134;0': Pine Plank Stairs
+  '134;0': Spruce Plank Stairs
   '135;0': Birch Plank Stairs
   '136;0': Jungle Plank Stairs
   '137;0': Command Block
@@ -431,7 +443,16 @@ items:
   '161;0': Acacia Leaves
   '161;1': Dark Oak Leaves
   '162;0': Acacia Log
-  '163;1': Dark Oak Log
+  '162;1': Dark Oak Log
+  '163;0': Acacia Plank Stairs
+  '164;0': Dark Oak Plank Stairs
+  '165;0': Slime Block
+  '166;0': Barrier
+  '167;0': Iron Trapdoor
+  '168;0': Prismarine
+  '168;1': Prismarine Bricks
+  '168;2': Dark Prismarine
+  '169;0': Sea Lantern
   '170;0': Hay Bale
   '171;0': White Carpet
   '171;1': Orange Carpet
@@ -464,6 +485,30 @@ items:
   '175;11': Large Plant Top
   '175;12': Large Plant Top
   '175;13': Large Plant Top
+  '176;0': Banner
+  '177;0': Banner
+  '178;0': Inverted Daylight Sensor
+  '179;0': Red Sandstone
+  '179;1': Smooth Red Sandstone
+  '179;2': Chiseled Red Sandstone
+  '180;0': Red Sandstone Stairs
+  '181;0': Red Sandstone Double Slab
+  '182;0': Red Sandstone Slab
+  '183;0': Spruce Fence Gate
+  '184;0': Birch Fence Gate
+  '185;0': Jungle Fence Gate
+  '186;0': Dark Oak Fence Gate
+  '187;0': Acacia Fence Gate
+  '188;0': Spruce Fence
+  '189;0': Birch Fence
+  '190;0': Jungle Fence
+  '191;0': Dark Oak Fence
+  '192;0': Acacia Fence
+  '193;0': Spruce Door
+  '194;0': Birch Door
+  '195;0': Jungle Door
+  '196;0': Acacia Door
+  '197;0'; Dark Oak Door
   '256;0': Iron Shovel
   '257;0': Iron Pickaxe
   '258;0': Iron Axe
@@ -534,7 +579,7 @@ items:
   '322;0': Golden Apple
   '322;1': Super Golden Apple
   '323;0': Sign
-  '324;0': Wooden Door
+  '324;0': Oak Door
   '325;0': Empty Bucket
   '326;0': Water Bucket
   '327;0': Lava Bucket
@@ -613,7 +658,7 @@ items:
   '373;8': Potion of Weakness
   '373;9': Potion of Strength
   '373;10': Potion of Slowness
-  '373;11': Diffuse Potion
+  '373;11': Potion of Leaping
   '373;12': Potion of Harming
   '373;13': Potion of Water Breathing
   '373;14': Potion of Invisibility
@@ -645,7 +690,7 @@ items:
   '373;40': Potion of Weakness
   '373;41': Potion of Strength II
   '373;42': Potion of Slowness
-  '373;43': Refined Potion
+  '373;43': Potion of Leaping II
   '373;44': Potion of Harming II
   '373;45': Potion of Water Breathing
   '373;46': Sparkling Potion
@@ -692,6 +737,8 @@ items:
   '383;64': Wither Spawn Egg
   '383;65': Bat Spawn Egg
   '383;66': Witch Spawn Egg
+  '383;67': Endermite Spawn Egg
+  '383;68': Guardian Spawn Egg
   '383;90': Pig Spawn Egg
   '383;91': Sheep Spawn Egg
   '383;92': Cow Spawn Egg
@@ -702,6 +749,7 @@ items:
   '383;98': Ocelot Spawn Egg
   '383;99': Iron Golem Spawn Egg
   '383;100': Horse Spawn Egg
+  '383;101': Rabbit Spawn Egg
   '383;120': Villager Spawn Egg
   '384;0': Bottle o' Enchanting
   '385;0': Fire Charge
@@ -732,12 +780,43 @@ items:
   '406;0': Nether Quartz
   '407;0': Minecart with TNT
   '408;0': Minecart with Hopper
+  '409;0': Prismarine Shard
+  '410;0': Prismarine Crystals
+  '411;0': Raw Rabbit
+  '412;0': Cooked Rabbit
+  '413;0': Rabbit Stew
+  '414;0': Rabbit Foot
+  '415;0': Rabbit Hide
+  '416;0': Armor Stand
   '417;0': Iron Horse Armor
   '418;0': Gold Horse Armor
   '419;0': Diamond Horse Armor
   '420;0': Lead
   '421;0': Name Tag
   '422;0': Minecart with Command Block
+  '423;0': Raw Mutton
+  '424;0': Cooked Mutton
+  '425;0': Black Banner
+  '425;1': Red Banner
+  '425;2': Green Banner
+  '425;3': Brown Banner
+  '425;4': Blue Banner
+  '425;5': Purple Banner
+  '425;6': Cyan Banner
+  '425;7': Light Gray Banner
+  '425;8': Gray Banner
+  '425;9': Pink Banner
+  '425;10': Lime Banner
+  '425;11': Yellow Banner
+  '425;12': Light Blue Banner
+  '425;13': Magenta Banner
+  '425;14': Orange Banner
+  '425;15': White Banner
+  '427;0': Spruce Door
+  '428;0': Birch Door
+  '429;0': Jungle Door
+  '430;0': Acacia Door
+  '431;0': Dark Oak Door
   '2256;0': 13 Disc
   '2257;0': Cat Disc
   '2258;0': Blocks Disc
@@ -761,6 +840,7 @@ enchantments:
   '5': Respiration
   '6': Aqua Afinity
   '7': Thorns
+  '8': Depth Strider
   '16': Sharpness
   '17': Smite
   '18': Bane of Arthropods
